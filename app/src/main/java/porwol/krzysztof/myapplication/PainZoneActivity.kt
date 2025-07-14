@@ -35,13 +35,13 @@ class PainZoneActivity :
                             }
                         )
                     }
-
                     composable("plan_A") {
                         Text("ekran planu A")
                     }
                 }
-
             }
         }
     }
 }
+
+// Git nad GitHub Test
