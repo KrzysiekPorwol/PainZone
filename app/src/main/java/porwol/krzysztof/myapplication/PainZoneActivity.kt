@@ -47,3 +47,5 @@ class PainZoneActivity :
 // Teraz chcę cofnąć
 // Testowanie komend git i githuba
 // Kolejny test (Wrzucenie commitów na githuba)
+// Git nad GitHub Kolejny Test.
+
