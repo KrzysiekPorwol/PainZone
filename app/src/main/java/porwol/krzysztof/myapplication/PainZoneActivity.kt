@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -44,4 +43,7 @@ class PainZoneActivity :
     }
 }
 
-// Git nad GitHub Test
+// Tutaj powinno być porównanie
+// Teraz chcę cofnąć
+// Testowanie komend git i githuba
+// Kolejny test (Wrzucenie commitów na githuba)
