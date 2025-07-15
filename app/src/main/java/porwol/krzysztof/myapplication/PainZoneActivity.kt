@@ -5,11 +5,19 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranGłówny
 import porwol.krzysztof.myapplication.ui.theme.MyApplicationTheme
+import porwol.krzysztof.myapplication.Nawigacja.Ekran
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanA
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanB
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanC
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranEdytujĆwiczenia
 
 
 class PainZoneActivity :
@@ -24,28 +32,51 @@ class PainZoneActivity :
         setContent {
 
             MyApplicationTheme() { // MyApplicationTheme ustawia wygląd całej aplikacji, ładując kolory, czcionki i style z plików w folderze ui.theme.
+
                 val navController = rememberNavController() // rememberNavController() – tworzy obiekt, który zarządza nawigacją między ekranami.
 
-                NavHost(navController = navController, startDestination = "ekran_główny") { // NavHost(...) – to miejsce, w którym określasz wszystkie możliwe ekrany Twojej aplikacji.
-                    composable("ekran_główny") { // to definicja pierwszego ekranu.
-                        EkranGłówny(
-                            onKlikPlanA = {
-                                navController.navigate("plan_A") // przejście do nowego ekranu o nazwie plan_a
-                            }
-                        )
-                    }
-                    composable("plan_A") {
-                        Text("ekran planu A")
-                    }
+                PainZoneNavHost(navController)
+
+
+
+
+//                                    composable(Ekran.Główny_Ekran.trasa) { // to definicja pierwszego ekranu.
+//                        EkranGłówny(
+//                            onKlikPlanA = {
+//                                navController.navigate("plan_A") // przejście do nowego ekranu o nazwie plan_a
+//                            }
+//                        )
+//                    }
+//
+
+
                 }
             }
         }
     }
-}
 
-// Tutaj powinno być porównanie
-// Teraz chcę cofnąć
-// Testowanie komend git i githuba
-// Kolejny test (Wrzucenie commitów na githuba)
-// Git nad GitHub Kolejny Test.
+@Composable
+fun PainZoneNavHost(navController: NavHostController) {
+    // NavHost(...) – to miejsce, w którym określasz wszystkie możliwe ekrany Twojej aplikacji.
+    NavHost(
+        navController = navController,
+        startDestination = Ekran.Główny_Ekran.trasa
+    ) {
+        composable(Ekran.Główny_Ekran.trasa) {
+            EkranGłówny(navController)
+        }
+        composable(Ekran.Plan_A.trasa) {
+            EkranPlanA(navController)
+        }
+        composable(Ekran.Plan_B.trasa) {
+            EkranPlanB(navController)
+        }
+        composable(Ekran.Plan_C.trasa) {
+            EkranPlanC(navController)
+        }
+        composable(Ekran.Edytuj_Ćwiczenia.trasa) {
+            EkranEdytujĆwiczenia(navController)
+        }
+    }
+}
 

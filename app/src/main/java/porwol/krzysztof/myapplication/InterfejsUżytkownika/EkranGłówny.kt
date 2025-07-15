@@ -21,9 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import porwol.krzysztof.myapplication.Nawigacja.Ekran
 
 @Composable
-fun EkranGłówny(onKlikPlanA: () -> Unit) {
+fun EkranGłówny(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -38,7 +41,7 @@ fun EkranGłówny(onKlikPlanA: () -> Unit) {
             MałyKafelek(
                 tekst = "Plan A",
                 modifier = Modifier.weight(1f),
-                onClick = onKlikPlanA
+                onClick = { navController.navigate(Ekran.Plan_A.trasa) }
             )
 
             Spacer(Modifier.width(16.dp))
@@ -56,7 +59,7 @@ fun EkranGłówny(onKlikPlanA: () -> Unit) {
             MałyKafelek(
                 tekst = "Plan B",
                 modifier = Modifier.weight(1f),
-                onClick = onKlikPlanA
+                onClick = { navController.navigate(Ekran.Plan_B.trasa) }
             )
 
             Spacer(Modifier.width(16.dp))
@@ -64,7 +67,7 @@ fun EkranGłówny(onKlikPlanA: () -> Unit) {
             MałyKafelek(
                 tekst = "Plan C",
                 modifier = Modifier.weight(1f),
-                onClick = onKlikPlanA
+                onClick = { navController.navigate(Ekran.Plan_C.trasa) }
             )
         }
 
@@ -74,7 +77,10 @@ fun EkranGłówny(onKlikPlanA: () -> Unit) {
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
-        ) { DużyKafelek(modifier = Modifier.weight(1f)) }
+        ) { DużyKafelek(
+            modifier = Modifier.weight(1f),
+            onClick = { navController.navigate(Ekran.Edytuj_Ćwiczenia.trasa) }
+        ) }
     }
 }
 
@@ -102,12 +108,13 @@ fun MałyKafelek(tekst: String, modifier: Modifier, onClick: () -> Unit) {
 
 
 @Composable
-fun DużyKafelek(modifier: Modifier) {
+fun DużyKafelek(modifier: Modifier, onClick: () -> Unit) {
     Card(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         modifier = modifier
             .fillMaxHeight()
             .fillMaxHeight()
+            .clickable{ onClick() }
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),

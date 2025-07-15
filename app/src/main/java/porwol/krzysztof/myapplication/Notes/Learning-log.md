@@ -25,5 +25,12 @@ treningu)
    zdalnie, nadpisywanie stanu zdalnego stanem lokalnym, używanie do tego konsoli alt+F12.
 2. Stworzenie tego pliku do prowadzenia postępów (Po wprowadzeniu git i githuba).
 
+
 **2025-07-15**
-1. 
+1. Edycja Navhost, stworzenie tras, stworzenie reszty ekranów (wstępne), 
+!- Nie rozumiem jak działa navHost -!
+2. IRYTACJA przez niezrozumienie :).
+
+
+**2025-07-16**
+
