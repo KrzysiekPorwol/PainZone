@@ -33,22 +33,12 @@ class PainZoneActivity :
 
             MyApplicationTheme() { // MyApplicationTheme ustawia wygląd całej aplikacji, ładując kolory, czcionki i style z plików w folderze ui.theme.
 
-                val navController = rememberNavController() // rememberNavController() – tworzy obiekt, który zarządza nawigacją między ekranami.
+                // rememberNavController() – tworzy obiekt, który zarządza nawigacją
+                // (rememberNavController to specialna funkcja, która zarządza ekranami
+                // pobrana dzięki import w build gradle (biblioteka))
+                val navController = rememberNavController()
 
                 PainZoneNavHost(navController)
-
-
-
-
-//                                    composable(Ekran.Główny_Ekran.trasa) { // to definicja pierwszego ekranu.
-//                        EkranGłówny(
-//                            onKlikPlanA = {
-//                                navController.navigate("plan_A") // przejście do nowego ekranu o nazwie plan_a
-//                            }
-//                        )
-//                    }
-//
-
 
                 }
             }

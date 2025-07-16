@@ -33,4 +33,6 @@ treningu)
 
 
 **2025-07-16**
-
+1. Zrozumiałem jak działa NavHost, ale dalej sprawia mi problemy.
+2. Dodanie Pliku komponenty (W nim przycisk powrotu)
+3. Dodanie przycisku powrotu do ekranów Plan A, Plan B, Plan C oraz edytuj ćwiczenia w planie
