@@ -4,16 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranGłówny
 import porwol.krzysztof.myapplication.ui.theme.MyApplicationTheme
-import porwol.krzysztof.myapplication.Nawigacja.Ekran
+import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanA
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanB
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanC

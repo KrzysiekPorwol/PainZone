@@ -2,12 +2,13 @@ package porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import porwol.krzysztof.myapplication.Nawigacja.Ekran
+import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
 
 @Composable
 fun PrzyciskPowrotuDoGłównegoEkranu(navController: NavController) {
@@ -19,7 +20,9 @@ fun PrzyciskPowrotuDoGłównegoEkranu(navController: NavController) {
             }
         },
         modifier = Modifier
-            .padding(16.dp)
+            .padding(16.dp),
+        containerColor = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface
     ) {
         Text("<--")
     }

@@ -1,4 +1,4 @@
-package porwol.krzysztof.myapplication.Nawigacja
+package porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami
 
 // sealed class = zamknięta klasa bazowa dla tras
 sealed class Ekran(val trasa: String) {

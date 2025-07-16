@@ -1,6 +1,5 @@
 package porwol.krzysztof.myapplication.InterfejsUżytkownika
 
-import android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -22,8 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import porwol.krzysztof.myapplication.Nawigacja.Ekran
+import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
 
 @Composable
 fun EkranGłówny(navController: NavController) {
