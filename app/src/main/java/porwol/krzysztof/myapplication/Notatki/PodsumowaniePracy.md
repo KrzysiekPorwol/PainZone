@@ -43,4 +43,4 @@ treningu)
 **2025-07-21**
 1. Rozbudowanie widoku ekranu "EdytujĆwiczenia", tj. dodanie przycisków i ich odpowiednie
    ustawienie.
-2. 
+2. Dodanie zaznaczenia wybranego planu podczas dodawania ćwiczenia.
