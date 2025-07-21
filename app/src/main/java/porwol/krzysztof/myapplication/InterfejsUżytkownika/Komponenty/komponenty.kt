@@ -11,7 +11,11 @@ import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
 
 @Composable
-fun PrzyciskPowrotuDoGłównegoEkranu(navController: NavController) {
+fun PrzyciskPowrotuDoGłównegoEkranu(
+    navController: NavController,
+    modifier: Modifier = Modifier
+        .padding(16.dp)
+) {
     FloatingActionButton(
         onClick = {
             navController.navigate(Ekran.Główny_Ekran.trasa) {
@@ -19,8 +23,7 @@ fun PrzyciskPowrotuDoGłównegoEkranu(navController: NavController) {
                 launchSingleTop = true
             }
         },
-        modifier = Modifier
-            .padding(16.dp),
+        modifier = modifier,
         containerColor = MaterialTheme.colorScheme.surface,
         contentColor = MaterialTheme.colorScheme.onSurface
     ) {

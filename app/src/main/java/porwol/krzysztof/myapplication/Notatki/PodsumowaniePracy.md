@@ -34,7 +34,13 @@ treningu)
 
 **2025-07-16**
 1. Zrozumiałem jak działa NavHost, ale dalej sprawia mi problemy.
-2. Dodanie Pliku komponenty (W nim przycisk powrotu)
-3. Dodanie przycisku powrotu do ekranów Plan A, Plan B, Plan C oraz edytuj ćwiczenia w planie
-4. Dodanie tymczasowych baz danych (Bez ViewModelu i room)
-5. Stworzenie pól tekstowych w Ekranie "Edytuj ćwiczenia"
+2. Dodanie Pliku komponenty (W nim przycisk powrotu).
+3. Dodanie przycisku powrotu do ekranów Plan A, Plan B, Plan C oraz edytuj ćwiczenia w planie.
+4. Dodanie tymczasowych baz danych (Bez ViewModelu i room).
+5. Stworzenie pól tekstowych w Ekranie "Edytuj ćwiczenia".
+
+
+**2025-07-21**
+1. Rozbudowanie widoku ekranu "EdytujĆwiczenia", tj. dodanie przycisków i ich odpowiednie
+   ustawienie.
+2. 
