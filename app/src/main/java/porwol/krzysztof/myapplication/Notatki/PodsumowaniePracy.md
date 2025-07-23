@@ -44,3 +44,10 @@ treningu)
 1. Rozbudowanie widoku ekranu "EdytujĆwiczenia", tj. dodanie przycisków i ich odpowiednie
    ustawienie.
 2. Dodanie zaznaczenia wybranego planu podczas dodawania ćwiczenia.
+
+
+
+**2025-07-23**
+1. Zapisywanie (w pamięci włączonej aplikacji) danych dodanego ćwiczenia
+2. Wyświetlanie zapisanego ćwiczenia w planie A.
+3. Wyświetlanie póltekstowych w ilości zależnej od ilości serii danego ćwiczenia.

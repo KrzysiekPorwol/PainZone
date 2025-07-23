@@ -30,6 +30,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.PrzyciskPowrotuDoGłównegoEkranu
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.DodajĆwiczenieDoPlanu
+import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
+import porwol.krzysztof.myapplication.ReprezentacjaDanych.Ćwiczenie
 import java.nio.file.WatchEvent
 
 @Composable
@@ -107,7 +110,7 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                         .weight(1f)
                 ) {
                     Button(
-                        onClick = { wybranyPlan = "Plan B"},
+                        onClick = { wybranyPlan = "Plan B" },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomCenter)
@@ -156,7 +159,21 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                         .weight(1f)
                 ) {
                     Button(
-                        onClick = {},
+                        onClick = {
+                            val noweĆwiczenie = Ćwiczenie(
+                                nazwa = nazwa,
+                                powtórzenia = powtórzenia.toInt(),
+                                serie = serie.toInt()
+                            )
+
+                            DodajĆwiczenieDoPlanu(wybranyPlan, noweĆwiczenie)
+
+                            println("Plan A:" + TymczasowyZestawPlanówĆwiczeń.planA)
+
+                            navController.popBackStack()
+
+
+                                  },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomCenter)

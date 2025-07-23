@@ -9,6 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
+import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
+import porwol.krzysztof.myapplication.ReprezentacjaDanych.Ćwiczenie
 
 @Composable
 fun PrzyciskPowrotuDoGłównegoEkranu(
@@ -28,5 +30,13 @@ fun PrzyciskPowrotuDoGłównegoEkranu(
         contentColor = MaterialTheme.colorScheme.onSurface
     ) {
         Text("<--")
+    }
+}
+
+fun DodajĆwiczenieDoPlanu(plan: String, ćwiczenie: Ćwiczenie) {
+    when (plan) {
+        "Plan A" -> TymczasowyZestawPlanówĆwiczeń.planA.add(ćwiczenie)
+        "Plan B" -> TymczasowyZestawPlanówĆwiczeń.planB.add(ćwiczenie)
+        "Plan C" -> TymczasowyZestawPlanówĆwiczeń.planC.add(ćwiczenie)
     }
 }
