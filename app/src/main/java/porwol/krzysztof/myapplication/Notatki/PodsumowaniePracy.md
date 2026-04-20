@@ -48,6 +48,13 @@ treningu)
 
 
 **2025-07-23**
-1. Zapisywanie (w pamięci włączonej aplikacji) danych dodanego ćwiczenia
+1. Zapisywanie (w pamięci włączonej aplikacji) danych dodanego ćwiczenia.
 2. Wyświetlanie zapisanego ćwiczenia w planie A.
 3. Wyświetlanie póltekstowych w ilości zależnej od ilości serii danego ćwiczenia.
+
+**2026-04-20**
+1. Powrót do pracy nad projektem po 9 miesięcznej przerwie.
+2. Instalacja środowiska pracy na MacOS.
+3. Przypomniałem sobie schemat odpalania aplikacji przez Android
+4. Przyjrzałem się plikom AndroidManifest.xml oraz PainZoneActivity.kt - szczegółowo 
+zrozumiałem do czego służą te pliki.
