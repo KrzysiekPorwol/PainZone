@@ -38,10 +38,10 @@ class PainZoneActivity :
 
                 PainZoneNavHost(navController)
 
-                }
             }
         }
     }
+}
 
 @Composable
 fun PainZoneNavHost(navController: NavHostController) {
