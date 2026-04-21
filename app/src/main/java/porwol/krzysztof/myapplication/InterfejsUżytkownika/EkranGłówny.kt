@@ -89,7 +89,6 @@ fun MałyKafelek(tekst: String, modifier: Modifier, onClick: () -> Unit) {
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         modifier = modifier
             .fillMaxHeight()
-            .fillMaxHeight()
             .clickable { onClick() }
     ) {
         Box(
@@ -111,7 +110,6 @@ fun DużyKafelek(modifier: Modifier, onClick: () -> Unit) {
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         modifier = modifier
             .fillMaxHeight()
-            .fillMaxHeight()
             .clickable{ onClick() }
     ) {
         Box(
@@ -129,7 +127,6 @@ fun TekstMotywacyjny(modifier: Modifier) {
     Card(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background),
         modifier = modifier
-            .fillMaxHeight()
             .fillMaxHeight()
     ) {
         Box(

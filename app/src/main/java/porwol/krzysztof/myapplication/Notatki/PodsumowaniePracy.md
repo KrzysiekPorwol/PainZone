@@ -55,6 +55,13 @@ treningu)
 **2026-04-20**
 1. Powrót do pracy nad projektem po 9 miesięcznej przerwie.
 2. Instalacja środowiska pracy na MacOS.
-3. Przypomniałem sobie schemat odpalania aplikacji przez Android
+3. Przypomniałem sobie schemat odpalania aplikacji przez Android.
 4. Przyjrzałem się plikom AndroidManifest.xml oraz PainZoneActivity.kt - szczegółowo 
 zrozumiałem do czego służą te pliki.
+
+
+**2026-04-21**
+1. Ciąg dalszy nauki jak działa i do czego służy PainZoneActivity.kt.
+2. Zrozumienie działania pliku Ekrany.kt.
+3. Zrozumienie działania i powodu stosowania konkretnych rozwiązań w pliku EkranGłówny.kt.
+4. Usuniecie duplikacji kodu w MałyKafelek, DużyKafelek, TekstMotywacyjny.
