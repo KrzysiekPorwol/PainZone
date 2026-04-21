@@ -65,3 +65,4 @@ zrozumiałem do czego służą te pliki.
 2. Zrozumienie działania pliku Ekrany.kt.
 3. Zrozumienie działania i powodu stosowania konkretnych rozwiązań w pliku EkranGłówny.kt.
 4. Usuniecie duplikacji kodu w MałyKafelek, DużyKafelek, TekstMotywacyjny.
+5. Zapoznanie się z plikiem EkranPlanA.kt.

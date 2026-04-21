@@ -42,14 +42,14 @@ fun EkranPlanA(navController: NavController) {
         if (listaĆwiczeń.isEmpty()) {
             Text("Brak ćwiczeń w planie.")
         } else {
-            listaĆwiczeń.forEach { PojedyńczeĆwiczenie ->
+            listaĆwiczeń.forEach { pojedyńczeĆwiczenie ->
                 Text(
-                    "${PojedyńczeĆwiczenie.nazwa} " +
-                            "- ilość serii: ${PojedyńczeĆwiczenie.serie} " +
-                            "- Powtórzeń: ${PojedyńczeĆwiczenie.powtórzenia}"
+                    "${pojedyńczeĆwiczenie.nazwa} " +
+                            "- ilość serii: ${pojedyńczeĆwiczenie.serie} " +
+                            "- Powtórzeń: ${pojedyńczeĆwiczenie.powtórzenia}"
                 )
                 // Powtórz tyle razy, ile jest serii
-                repeat(PojedyńczeĆwiczenie.serie) { IlośćSerii ->
+                repeat(pojedyńczeĆwiczenie.serie) { IlośćSerii ->
 
                 var powtórzeniaDanejSerii by remember { mutableStateOf("") }
                 var ciężarDanejSerii by remember { mutableStateOf("")}
