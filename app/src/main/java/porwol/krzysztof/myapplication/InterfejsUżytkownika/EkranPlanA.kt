@@ -48,8 +48,13 @@ fun EkranPlanA(navController: NavController) {
                             "- ilość serii: ${pojedyńczeĆwiczenie.serie} " +
                             "- Powtórzeń: ${pojedyńczeĆwiczenie.powtórzenia}"
                 )
-                // Powtórz tyle razy, ile jest serii
-                repeat(pojedyńczeĆwiczenie.serie) { IlośćSerii ->
+
+                // Powtórz tyle razy, ile jest serii -
+                // tutaj repeat przekazuje iteracje ilosci serii (indeks) czyli
+                // tak naprawdę 0, 1 i 2 (w przypadku 3 serii)
+                // efekt jest ten sam, ale warto wiedzieć na przyszlość.
+
+                repeat(pojedyńczeĆwiczenie.serie) { IndeksSerii ->
 
                 var powtórzeniaDanejSerii by remember { mutableStateOf("") }
                 var ciężarDanejSerii by remember { mutableStateOf("")}

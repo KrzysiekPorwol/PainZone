@@ -66,3 +66,8 @@ zrozumiałem do czego służą te pliki.
 3. Zrozumienie działania i powodu stosowania konkretnych rozwiązań w pliku EkranGłówny.kt.
 4. Usuniecie duplikacji kodu w MałyKafelek, DużyKafelek, TekstMotywacyjny.
 5. Zapoznanie się z plikiem EkranPlanA.kt.
+
+
+**2026-04-22**
+1. Pełne zrozumienie pliku EkranPlanA.kt.
+2. Pełne zrozumienie plików Cwiczenie.kt, TymczasowyZestawPlanówCwiczen.kt.
