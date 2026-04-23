@@ -79,3 +79,5 @@ zrozumiałem do czego służą te pliki.
 3. Pełne zrozumienie pliku EkranEdytujCwiczenia.kt.
 4. Dodanie funkcji scrolowania ćwiczeń w planie A.
 5. Usunięcie ilości powtórzeń podczas edycji ćwiczenia oraz z tytułu ćwiczenia w Planie.
+6. Dodano przycisk "Usuń Ćwiczenie" w Planie A.
+7. Poprawki wizualne w Planie A.
