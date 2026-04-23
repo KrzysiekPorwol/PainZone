@@ -62,16 +62,6 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
             Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = powtórzenia,
-                onValueChange = { powtórzenia = it },
-                label = { Text("Ilość powtórzeń") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            OutlinedTextField(
                 value = serie,
                 onValueChange = { serie = it },
                 label = { Text("Ilość serii") },
@@ -161,8 +151,7 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                     Button(
                         onClick = {
                             val noweĆwiczenie = Ćwiczenie(
-                                nazwka = nazwa,
-                                powtórzenia = powtórzenia.toInt(),
+                                nazwa = nazwa,
                                 serie = serie.toInt()
                             )
 
