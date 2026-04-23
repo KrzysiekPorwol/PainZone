@@ -1,8 +1,6 @@
 package porwol.krzysztof.myapplication.InterfejsUżytkownika
 
-import android.widget.Space
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,7 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -27,13 +25,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.PrzyciskPowrotuDoGłównegoEkranu
-import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.DodajĆwiczenieDoPlanu
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.dodajĆwiczenieDoPlanu
 import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
 import porwol.krzysztof.myapplication.ReprezentacjaDanych.Ćwiczenie
-import java.nio.file.WatchEvent
 
 @Composable
 fun EkranEdytujĆwiczenia(navController: NavController) {
@@ -67,6 +65,7 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                 value = powtórzenia,
                 onValueChange = { powtórzenia = it },
                 label = { Text("Ilość powtórzeń") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -76,6 +75,7 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                 value = serie,
                 onValueChange = { serie = it },
                 label = { Text("Ilość serii") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -161,12 +161,12 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                     Button(
                         onClick = {
                             val noweĆwiczenie = Ćwiczenie(
-                                nazwa = nazwa,
+                                nazwka = nazwa,
                                 powtórzenia = powtórzenia.toInt(),
                                 serie = serie.toInt()
                             )
 
-                            DodajĆwiczenieDoPlanu(wybranyPlan, noweĆwiczenie)
+                            dodajĆwiczenieDoPlanu(wybranyPlan, noweĆwiczenie)
 
                             println("Plan A:" + TymczasowyZestawPlanówĆwiczeń.planA)
 

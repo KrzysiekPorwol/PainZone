@@ -71,3 +71,10 @@ zrozumiałem do czego służą te pliki.
 **2026-04-22**
 1. Pełne zrozumienie pliku EkranPlanA.kt.
 2. Pełne zrozumienie plików Cwiczenie.kt, TymczasowyZestawPlanówCwiczen.kt.
+
+
+**2026-04-23**
+1. Pełne zrozumienie pliku komponenty.kt. 
+2. Dodano klawiature numeryczna przy wyborze pola "serie" i "powtórzenia" podczas dodawania ćwiczenia.
+3. Pełne zrozumienie pliku EkranEdytujCwiczenia.kt.
+4. 
