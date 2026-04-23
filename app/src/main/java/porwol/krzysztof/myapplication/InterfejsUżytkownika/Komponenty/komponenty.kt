@@ -21,8 +21,8 @@ fun PrzyciskPowrotuDoGłównegoEkranu(
     FloatingActionButton(
         onClick = {
             navController.navigate(Ekran.Główny_Ekran.trasa) {
-                popUpTo(Ekran.Główny_Ekran.trasa) {inclusive = true }
-                launchSingleTop = true
+                popUpTo(Ekran.Główny_Ekran.trasa) {inclusive = true } // usun wszystkie ekrany ze stosu włacznie z tym.
+                launchSingleTop = true // usun ekran glowny ze stosu jesli juz istnieje (zeby nie bylo dwoch) (tutaj raczej niemozliwe, bo juz usunelismy wszystkie ekrany linijke wyzej)
             }
         },
         modifier = modifier,
@@ -33,7 +33,7 @@ fun PrzyciskPowrotuDoGłównegoEkranu(
     }
 }
 
-fun DodajĆwiczenieDoPlanu(plan: String, ćwiczenie: Ćwiczenie) {
+fun dodajĆwiczenieDoPlanu(plan: String, ćwiczenie: Ćwiczenie) {
     when (plan) {
         "Plan A" -> TymczasowyZestawPlanówĆwiczeń.planA.add(ćwiczenie)
         "Plan B" -> TymczasowyZestawPlanówĆwiczeń.planB.add(ćwiczenie)
