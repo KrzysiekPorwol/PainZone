@@ -41,7 +41,6 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
 
     // Stan dla pól tekstowych
     var nazwa by remember { mutableStateOf("") }
-    var powtórzenia by remember { mutableStateOf("") }
     var serie by remember { mutableStateOf("") }
 
     Box() {
