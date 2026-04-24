@@ -81,3 +81,8 @@ zrozumiałem do czego służą te pliki.
 5. Usunięcie ilości powtórzeń podczas edycji ćwiczenia oraz z tytułu ćwiczenia w Planie.
 6. Dodano przycisk "Usuń Ćwiczenie" w Planie A.
 7. Poprawki wizualne w Planie A.
+
+
+**2026-04-24**
+1. Zrobienie walidacji podczas dodawania ćwiczenia.
+2. Poprawki wizualne w wyświetlanym ćwiczeniu.
