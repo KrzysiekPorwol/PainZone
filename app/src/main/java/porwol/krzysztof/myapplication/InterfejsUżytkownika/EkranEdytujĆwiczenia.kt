@@ -53,8 +53,8 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
         ) {
             OutlinedTextField(
                 value = nazwa,
-                onValueChange = { nazwa = it },
-                label = { Text("Nazwa Ćwiczenia") },
+                onValueChange = { nazwa = it.take(17) },
+                label = { Text("Nazwa Ćwiczenia (maks 17 znaków)") },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -62,7 +62,8 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
 
             OutlinedTextField(
                 value = serie,
-                onValueChange = { serie = it },
+                onValueChange = { nowa ->
+                    if (nowa.all { it.isDigit() }) serie = nowa.take(2) },
                 label = { Text("Ilość serii") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()

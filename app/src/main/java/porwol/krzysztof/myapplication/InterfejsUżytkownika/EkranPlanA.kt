@@ -1,8 +1,10 @@
 package porwol.krzysztof.myapplication.InterfejsUżytkownika
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -60,17 +64,35 @@ fun EkranPlanA(navController: NavController) {
                 )
             } else {
                 listaĆwiczeń.forEach { pojedyńczeĆwiczenie ->
-                    Text(
-                        "${pojedyńczeĆwiczenie.nazwa} " +
-                                "- ilość serii: ${pojedyńczeĆwiczenie.serie} ",
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Button(
-                        onClick = { listaĆwiczeń.remove(pojedyńczeĆwiczenie) }
-                    ) {
-                        Text("Usuń Ćwiczenie")
-                    }
+                   Row(
+                       modifier = Modifier.fillMaxWidth(),
+                       horizontalArrangement = Arrangement.SpaceBetween,
+                       verticalAlignment = Alignment.CenterVertically
+                   ) {
+                       Column() {
+                           Text(
+                               "- ${pojedyńczeĆwiczenie.nazwa} ",
+                               color = MaterialTheme.colorScheme.onSurface,
+                           )
+                           Text(
+                               "- Ilość serii: ${pojedyńczeĆwiczenie.serie} ",
+                               color = MaterialTheme.colorScheme.onSurface
+                           )
+                       }
 
+//                       Spacer(modifier = Modifier.weight(0.5f))
+
+                       Button(
+                           onClick = { listaĆwiczeń.remove(pojedyńczeĆwiczenie) },
+                           colors = ButtonDefaults.buttonColors(
+                               containerColor = MaterialTheme.colorScheme.surface,
+                               contentColor = MaterialTheme.colorScheme.onSurface
+                           )
+                       ) {
+                           Text("Usuń")
+                       }
+
+                   }
 
                     // Powtórz tyle razy, ile jest serii -
                     // tutaj repeat przekazuje iteracje ilosci serii (indeks) czyli
@@ -82,10 +104,15 @@ fun EkranPlanA(navController: NavController) {
                         var powtórzeniaDanejSerii by remember { mutableStateOf("") }
                         var ciężarDanejSerii by remember { mutableStateOf("") }
 
+//                        Text(
+//                            "Seria: ${IndeksSerii + 1}",
+//                            color = MaterialTheme.colorScheme.onSurface
+//                            )
+
                         OutlinedTextField(
                             value = ciężarDanejSerii,
                             onValueChange = { ciężarDanejSerii = it },
-                            label = { Text("Ciężar") },
+                            label = { Text("Podaj ciężar, Seria: ${IndeksSerii + 1}") },
                             modifier = Modifier.fillMaxWidth()
                         )
 
