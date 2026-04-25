@@ -112,14 +112,22 @@ fun EkranPlanA(navController: NavController) {
                         OutlinedTextField(
                             value = ciężarDanejSerii,
                             onValueChange = { ciężarDanejSerii = it },
-                            label = { Text("Podaj ciężar, Seria: ${IndeksSerii + 1}") },
+                            label = { Text("Podaj ciężar") },
+                            trailingIcon = {
+                                Text(
+                                    "Seria ${IndeksSerii + 1}",
+                                    modifier = Modifier.padding(end = 12.dp),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                ) },
                             modifier = Modifier.fillMaxWidth()
+
                         )
 
                         OutlinedTextField(
                             value = powtórzeniaDanejSerii,
                             onValueChange = { powtórzeniaDanejSerii = it },
-                            label = { Text("Ilość wykonanych powtórzeń") },
+                            label = { Text("Podaj ilość powtórzeń") },
                             modifier = Modifier.fillMaxWidth()
                         )
 

@@ -86,3 +86,14 @@ zrozumiałem do czego służą te pliki.
 **2026-04-24**
 1. Zrobienie walidacji podczas dodawania ćwiczenia.
 2. Poprawki wizualne w wyświetlanym ćwiczeniu.
+3. Stylizacja text fieldów w Planie A.
+4. Pobranie bilbioteki Room.
+5. Rozpoczęcie prac stworzenia bazy danych, która jest przeżywalna nawet
+po zamknięciu aplikacji. Zgodnie z architekturą MVVM.
+5. Edycja pliku "Ćwiczenie.kt" według standardów biblioteki room.
+6. Stworzenie pliku Plan.kt - dzięki niemu możemy przypisać konkretnemu ćwiczeniu w jakim ma być planie w ROOM.
+
+
+**2026-04-25**
+1. Stworzenie całego elementu "Model" według architektury MVVM. tj. 
+stworzenie folderu data razem z plikami AppDatabase, Cwiczenie, CwiczenieDao, Plan.
