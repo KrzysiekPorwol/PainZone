@@ -3,14 +3,12 @@ package porwol.krzysztof.myapplication.InterfejsUżytkownika
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -31,13 +29,14 @@ import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.PrzyciskPowrotuDoGłównegoEkranu
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.dodajĆwiczenieDoPlanu
 import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
-import porwol.krzysztof.myapplication.ReprezentacjaDanych.Ćwiczenie
+import porwol.krzysztof.myapplication.data.Cwiczenie
+import porwol.krzysztof.myapplication.data.Plan
 
 @Composable
 fun EkranEdytujĆwiczenia(navController: NavController) {
 
     //Stan dla wybranego planu
-    var wybranyPlan by remember { mutableStateOf("Plan A") }
+    var wybranyPlan by remember { mutableStateOf("A") }
 
     // Stan dla pól tekstowych
     var nazwa by remember { mutableStateOf("") }
@@ -80,13 +79,13 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                         .weight(1f)
                 ) {
                     Button(
-                        onClick = { wybranyPlan = "Plan A" },
+                        onClick = { wybranyPlan = "A" },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomStart)
                             .padding(10.dp)
                             .alpha(
-                                if (wybranyPlan == "Plan A") 1f else 0.5f
+                                if (wybranyPlan == "A") 1f else 0.5f
                             ),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.surface,
@@ -100,13 +99,13 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                         .weight(1f)
                 ) {
                     Button(
-                        onClick = { wybranyPlan = "Plan B" },
+                        onClick = { wybranyPlan = "B" },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomCenter)
                             .padding(10.dp)
                             .alpha(
-                                if (wybranyPlan == "Plan B") 1f else 0.5f
+                                if (wybranyPlan == "B") 1f else 0.5f
                             ),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.surface,
@@ -120,13 +119,13 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                         .weight(1f)
                 ) {
                     Button(
-                        onClick = { wybranyPlan = "Plan C"},
+                        onClick = { wybranyPlan = "C"},
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomEnd)
                             .padding(10.dp)
                             .alpha(
-                                if (wybranyPlan == "Plan C") 1f else 0.5f
+                                if (wybranyPlan == "C") 1f else 0.5f
                             ),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.surface,
@@ -150,19 +149,20 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                 ) {
                     Button(
                         onClick = {
-                            val noweĆwiczenie = Ćwiczenie(
+                            val noweCwiczenie = Cwiczenie(
                                 nazwa = nazwa,
-                                serie = serie.toInt()
+                                serie = serie.toInt(),
+                                plan = Plan.valueOf(wybranyPlan)
                             )
 
-                            dodajĆwiczenieDoPlanu(wybranyPlan, noweĆwiczenie)
+                            dodajĆwiczenieDoPlanu(wybranyPlan, noweCwiczenie)
 
                             println("Plan A:" + TymczasowyZestawPlanówĆwiczeń.planA)
 
                             navController.popBackStack()
 
 
-                                  },
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomCenter)

@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
 import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
-import porwol.krzysztof.myapplication.ReprezentacjaDanych.Ćwiczenie
+import porwol.krzysztof.myapplication.data.Cwiczenie
 
 @Composable
 fun PrzyciskPowrotuDoGłównegoEkranu(
@@ -33,10 +33,10 @@ fun PrzyciskPowrotuDoGłównegoEkranu(
     }
 }
 
-fun dodajĆwiczenieDoPlanu(plan: String, ćwiczenie: Ćwiczenie) {
+fun dodajĆwiczenieDoPlanu(plan: String, cwiczenie: Cwiczenie) {
     when (plan) {
-        "Plan A" -> TymczasowyZestawPlanówĆwiczeń.planA.add(ćwiczenie)
-        "Plan B" -> TymczasowyZestawPlanówĆwiczeń.planB.add(ćwiczenie)
-        "Plan C" -> TymczasowyZestawPlanówĆwiczeń.planC.add(ćwiczenie)
+        "Plan A" -> TymczasowyZestawPlanówĆwiczeń.planA.add(cwiczenie)
+        "Plan B" -> TymczasowyZestawPlanówĆwiczeń.planB.add(cwiczenie)
+        "Plan C" -> TymczasowyZestawPlanówĆwiczeń.planC.add(cwiczenie)
     }
 }

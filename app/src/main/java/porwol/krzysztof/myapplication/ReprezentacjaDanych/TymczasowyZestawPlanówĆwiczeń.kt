@@ -1,10 +1,10 @@
 package porwol.krzysztof.myapplication.ReprezentacjaDanych
 
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
+import porwol.krzysztof.myapplication.data.Cwiczenie
 
 object TymczasowyZestawPlanówĆwiczeń {
-    val planA = mutableStateListOf<Ćwiczenie>()
-    val planB = mutableListOf<Ćwiczenie>()
-    val planC = mutableListOf<Ćwiczenie>()
+    val planA = mutableStateListOf<Cwiczenie>()
+    val planB = mutableStateListOf<Cwiczenie>()
+    val planC = mutableStateListOf<Cwiczenie>()
 }
