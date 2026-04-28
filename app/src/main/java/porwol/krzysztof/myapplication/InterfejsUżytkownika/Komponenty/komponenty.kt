@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
-import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
 import porwol.krzysztof.myapplication.data.Cwiczenie
 
 @Composable
@@ -33,10 +32,12 @@ fun PrzyciskPowrotuDoGłównegoEkranu(
     }
 }
 
-fun dodajĆwiczenieDoPlanu(plan: String, cwiczenie: Cwiczenie) {
-    when (plan) {
-        "Plan A" -> TymczasowyZestawPlanówĆwiczeń.planA.add(cwiczenie)
-        "Plan B" -> TymczasowyZestawPlanówĆwiczeń.planB.add(cwiczenie)
-        "Plan C" -> TymczasowyZestawPlanówĆwiczeń.planC.add(cwiczenie)
-    }
-}
+
+// Ten kod zostawiam tylko w roli przypomnienia jak działało kiedyś zapisywanie danych.
+//fun dodajĆwiczenieDoPlanu(plan: String, cwiczenie: Cwiczenie) {
+//    when (plan) {
+//        "Plan A" -> TymczasowyZestawPlanówĆwiczeń.planA.add(cwiczenie)
+//        "Plan B" -> TymczasowyZestawPlanówĆwiczeń.planB.add(cwiczenie)
+//        "Plan C" -> TymczasowyZestawPlanówĆwiczeń.planC.add(cwiczenie)
+//    }
+//}
