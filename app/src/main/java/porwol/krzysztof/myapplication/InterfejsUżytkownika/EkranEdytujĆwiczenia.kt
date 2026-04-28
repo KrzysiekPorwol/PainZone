@@ -28,8 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.PrzyciskPowrotuDoGłównegoEkranu
-import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.dodajĆwiczenieDoPlanu
-import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
 import porwol.krzysztof.myapplication.data.Cwiczenie
 import porwol.krzysztof.myapplication.data.Plan
 import porwol.krzysztof.myapplication.viewmodel.TreningViewModel

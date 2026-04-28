@@ -104,5 +104,19 @@ stworzenie folderu data razem z plikami AppDatabase, Cwiczenie, CwiczenieDao, Pl
 1. Stworzenie folderu viewmodel i pliku "TreningViewModel".
 2. Przerobienie w EkraniePlanuA pobierania danych o ćwiczeniach (zamiana z zmiennej na 
 viewModel + bazę danych ROOM).
-3. Przerobienie EkranEdytujĆwiczenia zapisywania cwiczen (zamiana z zmiennej lista na)
+3. Przerobienie EkranEdytujĆwiczenia zapisywania cwiczen (zamiana z zmiennej lista na
 viewModel + bazę danych ROOM).
+4. Szukanie rozwiązania do stworzenia historii treningu (główny zamysł aplikacji to
+stworzenie SZYBKIEGO, WYGODNEGO sposobu do zapisywania postępów w treningu. Chodzi
+głównie o to, że w porównaniu z topowymi aplikacjami tego typu, zawsze trzeba 
+zapoznawać się z wieloma funkcjami, i zajmuje więcej czasu zwykłe zapisywanie
+postępów w swoim treningu. A obserwująć ludzi na siłowni, i po rozmowach z znajomymi
+co również trenują, zdecydowana wiekszość robi po prostu parę serii przy paru
+ćwiczeniach, i stara się podnieść więcej niż poprzednio).
+5. Stworzenie wstępnego zarysu (nowa baza danych na historie treningu, nowy ekran
+dla wprowadzania ciezarow i powtorzen w dniu treningowym. Stary ekran to widok 
+poprzednich wyników siłowych). Te rozwiązanie pozwoli na stworzenie pełnej historii
+treningu w przyszlości (będzie już na stałe zapisywać wyniki siłowe w bazie danych).
+6. Zakomentowanie starego kodu od zapisywania ćwiczeń.
+7. Stworzenie nowego pliku (encje) Trening.kt w folderze data.
+8. Stworzenie nowego pliku (operacje) TreningDao.kt.
