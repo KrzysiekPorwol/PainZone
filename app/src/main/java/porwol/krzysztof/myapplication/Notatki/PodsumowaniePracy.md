@@ -103,4 +103,6 @@ stworzenie folderu data razem z plikami AppDatabase, Cwiczenie, CwiczenieDao, Pl
 **2026-04-28**
 1. Stworzenie folderu viewmodel i pliku "TreningViewModel".
 2. Przerobienie w EkraniePlanuA pobierania danych o ćwiczeniach (zamiana z zmiennej na 
-viewModel + bazę danych ROOM)
+viewModel + bazę danych ROOM).
+3. Przerobienie EkranEdytujĆwiczenia zapisywania cwiczen (zamiana z zmiennej lista na)
+viewModel + bazę danych ROOM).

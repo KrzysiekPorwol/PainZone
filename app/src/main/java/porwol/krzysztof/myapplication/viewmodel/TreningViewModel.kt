@@ -27,7 +27,9 @@ class TreningViewModel(app: Application) : AndroidViewModel(app) {
         )
 
     fun dodaj(nazwa: String, serie: Int, plan: Plan) = viewModelScope.launch {
+        println("🟢 ViewModel.dodaj: nazwa=$nazwa, serie=$serie, plan=$plan")
         dao.dodaj(Cwiczenie(nazwa = nazwa, serie = serie, plan = plan))
+        println("🟢 Dodano do bazy!")
     }
 
     fun usun(cwiczenie: Cwiczenie) = viewModelScope.launch {
