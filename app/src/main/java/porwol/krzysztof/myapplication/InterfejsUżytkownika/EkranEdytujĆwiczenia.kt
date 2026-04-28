@@ -25,16 +25,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.PrzyciskPowrotuDoGłównegoEkranu
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.dodajĆwiczenieDoPlanu
 import porwol.krzysztof.myapplication.ReprezentacjaDanych.TymczasowyZestawPlanówĆwiczeń
 import porwol.krzysztof.myapplication.data.Cwiczenie
 import porwol.krzysztof.myapplication.data.Plan
+import porwol.krzysztof.myapplication.viewmodel.TreningViewModel
 
 @Composable
 fun EkranEdytujĆwiczenia(navController: NavController) {
 
+    val vm: TreningViewModel = viewModel()
     //Stan dla wybranego planu
     var wybranyPlan by remember { mutableStateOf("A") }
 
@@ -147,22 +150,36 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                     modifier = Modifier
                         .weight(1f)
                 ) {
+
                     Button(
                         onClick = {
-                            val noweCwiczenie = Cwiczenie(
+                            vm.dodaj(
                                 nazwa = nazwa,
                                 serie = serie.toInt(),
                                 plan = Plan.valueOf(wybranyPlan)
                             )
 
-                            dodajĆwiczenieDoPlanu(wybranyPlan, noweCwiczenie)
-
-                            println("Plan A:" + TymczasowyZestawPlanówĆwiczeń.planA)
-
                             navController.popBackStack()
-
-
                         },
+
+
+//                    Button( ZAPISANIE PLIKOW DO ZMIENNEJ Z LISTAMI CWICZEN. PRZED ROOM I VIEWMODEL.
+//
+////                        onClick = {
+////                            val noweCwiczenie = Cwiczenie(
+////                                nazwa = nazwa,
+////                                serie = serie.toInt(),
+////                                plan = Plan.valueOf(wybranyPlan)
+////                            )
+////
+////                            dodajĆwiczenieDoPlanu(wybranyPlan, noweCwiczenie)
+////
+////                            println("Plan A:" + TymczasowyZestawPlanówĆwiczeń.planA)
+////
+////                            navController.popBackStack()
+////
+////
+////                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomCenter)

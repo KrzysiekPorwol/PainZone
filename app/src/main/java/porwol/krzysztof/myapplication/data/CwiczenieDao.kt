@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CwiczenieDao {
 
-    @Query("SELECT * FROM cwiczenia WHERE 'plan' = :plan ORDER BY id ASC")
+    @Query("SELECT * FROM cwiczenia WHERE `plan` = :plan ORDER BY id ASC")
     fun obserwujPlan(plan: Plan): Flow<List<Cwiczenie>>
 
     @Insert
