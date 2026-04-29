@@ -13,4 +13,9 @@ sealed class Ekran(val trasa: String) {
 
     // Ekran do edycji ćwiczeń
     object Edytuj_Ćwiczenia : Ekran("ekran_edytuj_ćwiczenia")
+
+    // Ekran rozpoczęcia treningu — z parametrem planu (A/B/C)
+    object Rozpocznij_Trening : Ekran("ekran_rozpocznij_trening/{plan}") {
+        fun zTrasa(plan: String) = "ekran_rozpocznij_trening/$plan"
+    }
 }
