@@ -125,3 +125,7 @@ treningu w przyszlości (będzie już na stałe zapisywać wyniki siłowe w bazi
 **2026-04-29**
 1. Aktualizacja pliku AppDataBase - dodanie nowej tabeli w bazie, odwołanie do nowego DAO itd.
 2. Aktualizacja pliku TreningViewModel. - dodanie opcji zapisu treningu, oraz obserwacji ostatniego.
+3. Dodanie nowej trasy do Ekrany.kt - tworzę nawigację która przyjmuje parametry
+chcę stworzyć nowy ekran do wprowdzania wynikow siłowych, który będzie "dziedziczony"
+do planu A, B, C a nie tworzony w zasadzie taki sam ekran 3 razy.
+4. określenie nowego ekranu w PainZoneActivity NavHost.

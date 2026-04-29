@@ -6,9 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranGłówny
 import porwol.krzysztof.myapplication.ui.theme.MyApplicationTheme
 import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
@@ -16,6 +18,7 @@ import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanA
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanB
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanC
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranEdytujĆwiczenia
+import porwol.krzysztof.myapplication.data.Plan
 
 
 class PainZoneActivity :
@@ -64,6 +67,15 @@ fun PainZoneNavHost(navController: NavHostController) {
         }
         composable(Ekran.Edytuj_Ćwiczenia.trasa) {
             EkranEdytujĆwiczenia(navController)
+        }
+
+        composable(
+            route = Ekran.Rozpocznij_Trening.trasa,
+            arguments = listOf(navArgument("plan") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val planNazwa = backStackEntry.arguments?.getString("plan") ?: "A"
+            val plan = Plan.valueOf(planNazwa)
+            // EkranRozpocznijTrening(plan = plan, navController = navController)
         }
     }
 }
