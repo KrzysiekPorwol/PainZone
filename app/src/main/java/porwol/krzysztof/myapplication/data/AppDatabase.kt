@@ -5,10 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Cwiczenie::class], version = 1)
+@Database(entities = [Cwiczenie::class, Trening::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun ćwiczenieDao(): CwiczenieDao
+    abstract fun treningDao(): TreningDao
 
     companion object {
         @Volatile
@@ -20,7 +21,10 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "trening.db"
-                ).build().also { instancja = it }
+                )
+                    .fallbackToDestructiveMigration(true)
+                    .build()
+                    .also { instancja = it }
             }
     }
 

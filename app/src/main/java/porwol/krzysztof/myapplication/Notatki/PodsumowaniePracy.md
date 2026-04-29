@@ -120,3 +120,8 @@ treningu w przyszlości (będzie już na stałe zapisywać wyniki siłowe w bazi
 6. Zakomentowanie starego kodu od zapisywania ćwiczeń.
 7. Stworzenie nowego pliku (encje) Trening.kt w folderze data.
 8. Stworzenie nowego pliku (operacje) TreningDao.kt.
+
+
+**2026-04-29**
+1. Aktualizacja pliku AppDataBase - dodanie nowej tabeli w bazie, odwołanie do nowego DAO itd.
+2. Aktualizacja pliku TreningViewModel. - dodanie opcji zapisu treningu, oraz obserwacji ostatniego.
