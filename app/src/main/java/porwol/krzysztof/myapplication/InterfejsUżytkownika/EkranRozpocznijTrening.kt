@@ -56,12 +56,17 @@ fun EkranRozpocznijTrening(
             Spacer(modifier = Modifier.height(70.dp))
 
             Text(
-                "Trening — Plan $plan",
+                "Plan $plan — Trening",
                 color = MaterialTheme.colorScheme.onSurface
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            if (cwiczenia.isEmpty()) {
+                Text(
+                    "Lista ćwiczeń w tym planie jest pusta.",
+                    color = MaterialTheme.colorScheme.onSurface
+                ) } else {
             cwiczenia.forEach { pojedyńczeĆwiczenie ->
                 Text(
                     "${pojedyńczeĆwiczenie.nazwa}",
@@ -92,7 +97,8 @@ fun EkranRozpocznijTrening(
                     OutlinedTextField(
                         value = wynikiSerii[IndeksSerii].first,
                         onValueChange = { nowyCiezar ->
-                            wynikiSerii[IndeksSerii] = wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
+                            wynikiSerii[IndeksSerii] =
+                                wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
                         },
                         label = { Text("Podaj ciężar") },
                         trailingIcon = {
@@ -110,7 +116,8 @@ fun EkranRozpocznijTrening(
                     OutlinedTextField(
                         value = wynikiSerii[IndeksSerii].second,
                         onValueChange = { nowePowt ->
-                            wynikiSerii[IndeksSerii] = wynikiSerii[IndeksSerii].copy(second = nowePowt)
+                            wynikiSerii[IndeksSerii] =
+                                wynikiSerii[IndeksSerii].copy(second = nowePowt)
                         },
                         label = { Text("Podaj ilość powtórzeń") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -138,7 +145,7 @@ fun EkranRozpocznijTrening(
                 ) {
                     Text("Zapisz to ćwiczenie")
                 }
-
+            }
                 Spacer(modifier = Modifier.height(24.dp))
             }
 
