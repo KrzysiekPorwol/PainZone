@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranRozpocznijTrening
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranGłówny
 import porwol.krzysztof.myapplication.ui.theme.MyApplicationTheme
 import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
@@ -75,7 +76,7 @@ fun PainZoneNavHost(navController: NavHostController) {
         ) { backStackEntry ->
             val planNazwa = backStackEntry.arguments?.getString("plan") ?: "A"
             val plan = Plan.valueOf(planNazwa)
-            // EkranRozpocznijTrening(plan = plan, navController = navController)
+             EkranRozpocznijTrening(plan = plan, navController = navController)
         }
     }
 }
