@@ -129,3 +129,10 @@ treningu w przyszlości (będzie już na stałe zapisywać wyniki siłowe w bazi
 chcę stworzyć nowy ekran do wprowdzania wynikow siłowych, który będzie "dziedziczony"
 do planu A, B, C a nie tworzony w zasadzie taki sam ekran 3 razy.
 4. określenie nowego ekranu w PainZoneActivity NavHost.
+5. Stworzenie szkieletu i testy czy działa ekran "EkranRozpocznijTrening".
+6. Ciąg dalszy prac nad ekranem "EkranRozpocznijTrening".
+
+
+**2026-04-30**
+1. Stworzenie w komponentach przycisku wchodzenia do ekranu treningu, 
+i przypisanie go do Planu A.

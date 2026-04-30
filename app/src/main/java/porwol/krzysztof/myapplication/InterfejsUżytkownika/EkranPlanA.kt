@@ -29,6 +29,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.PrzyciskPowrotuDoGłównegoEkranu
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty.PrzyciskRozpocznijTrening
 import porwol.krzysztof.myapplication.viewmodel.TreningViewModel
 
 @Composable
@@ -56,6 +57,16 @@ fun EkranPlanA(navController: NavController) {
                 "Plan A - Ćwiczenia",
                 color = MaterialTheme.colorScheme.onSurface
             )
+
+            Button(
+                onClick = {
+                    navController.navigate(
+                        porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran.Rozpocznij_Trening.zTrasa("A")
+                    )
+                }
+            ) {
+                Text("TEST: Otwórz trening")
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -145,6 +156,15 @@ fun EkranPlanA(navController: NavController) {
             Spacer(Modifier.height(80.dp))
 
         }
+
+        PrzyciskRozpocznijTrening(
+            navController,
+            "A",
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.BottomStart)
+        )
+
         PrzyciskPowrotuDoGłównegoEkranu(
             navController,
             modifier = Modifier
