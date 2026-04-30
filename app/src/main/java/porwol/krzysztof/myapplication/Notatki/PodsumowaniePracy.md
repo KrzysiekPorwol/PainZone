@@ -136,3 +136,6 @@ do planu A, B, C a nie tworzony w zasadzie taki sam ekran 3 razy.
 **2026-04-30**
 1. Stworzenie w komponentach przycisku wchodzenia do ekranu treningu, 
 i przypisanie go do Planu A.
+2. Zmiana roli dla EkranuPlanA. od teraz ekran jest odpowiedzialny za pokazanie
+jakie ćwiczenia mamy w planie oraz możliwość ich usunięcia oraz przejścia do 
+realizacji treningu.

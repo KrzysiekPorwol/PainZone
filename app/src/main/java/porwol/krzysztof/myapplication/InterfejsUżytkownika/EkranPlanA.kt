@@ -58,16 +58,6 @@ fun EkranPlanA(navController: NavController) {
                 color = MaterialTheme.colorScheme.onSurface
             )
 
-            Button(
-                onClick = {
-                    navController.navigate(
-                        porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran.Rozpocznij_Trening.zTrasa("A")
-                    )
-                }
-            ) {
-                Text("TEST: Otwórz trening")
-            }
-
             Spacer(modifier = Modifier.height(16.dp))
 
             if (listaĆwiczeń.isEmpty()) {
@@ -93,8 +83,6 @@ fun EkranPlanA(navController: NavController) {
                            )
                        }
 
-//                       Spacer(modifier = Modifier.weight(0.5f))
-
                        Button(
 
 //                           onClick = { listaĆwiczeń.remove(pojedyńczeĆwiczenie) }, Zmiana sposobu usuwania z zmiennej na baze ROOM.
@@ -107,49 +95,8 @@ fun EkranPlanA(navController: NavController) {
                        ) {
                            Text("Usuń")
                        }
-
                    }
-
-                    // Powtórz tyle razy, ile jest serii -
-                    // tutaj repeat przekazuje iteracje ilosci serii (indeks) czyli
-                    // tak naprawdę 0, 1 i 2 (w przypadku 3 serii)
-                    // efekt jest ten sam, ale warto wiedzieć na przyszlość.
-
-                    repeat(pojedyńczeĆwiczenie.serie) { IndeksSerii ->
-
-                        var powtórzeniaDanejSerii by remember { mutableStateOf("") }
-                        var ciężarDanejSerii by remember { mutableStateOf("") }
-
-//                        Text(
-//                            "Seria: ${IndeksSerii + 1}",
-//                            color = MaterialTheme.colorScheme.onSurface
-//                            )
-
-                        OutlinedTextField(
-                            value = ciężarDanejSerii,
-                            onValueChange = { ciężarDanejSerii = it },
-                            label = { Text("Podaj ciężar") },
-                            trailingIcon = {
-                                Text(
-                                    "Seria ${IndeksSerii + 1}",
-                                    modifier = Modifier.padding(end = 12.dp),
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                ) },
-                            modifier = Modifier.fillMaxWidth()
-
-                        )
-
-                        OutlinedTextField(
-                            value = powtórzeniaDanejSerii,
-                            onValueChange = { powtórzeniaDanejSerii = it },
-                            label = { Text("Podaj ilość powtórzeń") },
-                            modifier = Modifier.fillMaxWidth()
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-
-                    }
+                    Spacer(Modifier.height(30.dp))
                 }
             }
 
