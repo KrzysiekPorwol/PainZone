@@ -139,3 +139,8 @@ i przypisanie go do Planu A.
 2. Zmiana roli dla EkranuPlanA. od teraz ekran jest odpowiedzialny za pokazanie
 jakie ćwiczenia mamy w planie oraz możliwość ich usunięcia oraz przejścia do 
 realizacji treningu.
+
+
+**2026-05-01**
+1. Stylizacja przypisku zapisu wyników w ćwiczeniu.
+2. Pokazanie Czakowi i wytłumaczenie co jak działa w apce. DAŁN
