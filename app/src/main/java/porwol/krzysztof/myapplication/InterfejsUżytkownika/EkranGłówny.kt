@@ -75,10 +75,12 @@ fun EkranGłówny(navController: NavController) {
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
-        ) { DużyKafelek(
-            modifier = Modifier.weight(1f),
-            onClick = { navController.navigate(Ekran.Edytuj_Ćwiczenia.trasa) }
-        ) }
+        ) {
+            DużyKafelek(
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate(Ekran.Edytuj_Ćwiczenia.trasa) }
+            )
+        }
     }
 }
 
@@ -110,7 +112,7 @@ fun DużyKafelek(modifier: Modifier, onClick: () -> Unit) {
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         modifier = modifier
             .fillMaxHeight()
-            .clickable{ onClick() }
+            .clickable { onClick() }
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),

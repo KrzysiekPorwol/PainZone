@@ -138,9 +138,15 @@ do planu A, B, C a nie tworzony w zasadzie taki sam ekran 3 razy.
 i przypisanie go do Planu A.
 2. Zmiana roli dla EkranuPlanA. od teraz ekran jest odpowiedzialny za pokazanie
 jakie ćwiczenia mamy w planie oraz możliwość ich usunięcia oraz przejścia do 
-realizacji treningu.
+realizacji treningu. To będzie dotyczyc wszystkich 3 ekranow planów.
 
 
 **2026-05-01**
 1. Stylizacja przypisku zapisu wyników w ćwiczeniu.
-2. Pokazanie Czakowi i wytłumaczenie co jak działa w apce. DAŁN
+
+
+**2026-05-05**
+1. Zmiana przycisku "rozpocznij trening".
+2. Stworzenie planu B i planu C na wzór planu A.
+3. Refaktoryzacja kodu - usuniecie nieużywanego pliku, pozbycie się starych
+komentarzy do kodu.

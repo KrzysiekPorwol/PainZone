@@ -36,10 +36,7 @@ import porwol.krzysztof.myapplication.viewmodel.TreningViewModel
 fun EkranPlanA(navController: NavController) {
 
     val vm: TreningViewModel = viewModel()
-
-//    val listaĆwiczeń = remember { TymczasowyZestawPlanówĆwiczeń.planA } Zamiana odczytu z "Zmiennej" na baze ROOM.
     val listaĆwiczeń by vm.planA.collectAsStateWithLifecycle()
-
     val stanScrolla = rememberScrollState()
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -67,35 +64,32 @@ fun EkranPlanA(navController: NavController) {
                 )
             } else {
                 listaĆwiczeń.forEach { pojedyńczeĆwiczenie ->
-                   Row(
-                       modifier = Modifier.fillMaxWidth(),
-                       horizontalArrangement = Arrangement.SpaceBetween,
-                       verticalAlignment = Alignment.CenterVertically
-                   ) {
-                       Column() {
-                           Text(
-                               "- ${pojedyńczeĆwiczenie.nazwa} ",
-                               color = MaterialTheme.colorScheme.onSurface,
-                           )
-                           Text(
-                               "- Ilość serii: ${pojedyńczeĆwiczenie.serie} ",
-                               color = MaterialTheme.colorScheme.onSurface
-                           )
-                       }
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column() {
+                            Text(
+                                "- ${pojedyńczeĆwiczenie.nazwa} ",
+                                color = MaterialTheme.colorScheme.onSurface,
+                            )
+                            Text(
+                                "- Ilość serii: ${pojedyńczeĆwiczenie.serie} ",
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                        }
 
-                       Button(
-
-//                           onClick = { listaĆwiczeń.remove(pojedyńczeĆwiczenie) }, Zmiana sposobu usuwania z zmiennej na baze ROOM.
-                           onClick = { vm.usun(pojedyńczeĆwiczenie) },
-
-                           colors = ButtonDefaults.buttonColors(
-                               containerColor = MaterialTheme.colorScheme.surface,
-                               contentColor = MaterialTheme.colorScheme.onSurface
-                           )
-                       ) {
-                           Text("Usuń")
-                       }
-                   }
+                        Button(
+                            onClick = { vm.usun(pojedyńczeĆwiczenie) },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.surface,
+                                contentColor = MaterialTheme.colorScheme.onSurface
+                            )
+                        ) {
+                            Text("Usuń")
+                        }
+                    }
                     Spacer(Modifier.height(30.dp))
                 }
             }
