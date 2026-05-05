@@ -67,94 +67,95 @@ fun EkranRozpocznijTrening(
                 Text(
                     "Lista ćwiczeń w tym planie jest pusta.",
                     color = MaterialTheme.colorScheme.onSurface
-                ) } else {
-            cwiczenia.forEach { pojedyńczeĆwiczenie ->
-                Text(
-                    "${pojedyńczeĆwiczenie.nazwa}",
-                    color = MaterialTheme.colorScheme.onSurface
                 )
+            } else {
+                cwiczenia.forEach { pojedyńczeĆwiczenie ->
+                    Text(
+                        "${pojedyńczeĆwiczenie.nazwa}",
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
 
-                val ostatniTrening by vm.obserwujOstatniTrening(pojedyńczeĆwiczenie.id)
-                    .collectAsStateWithLifecycle(initialValue = null)
+                    val ostatniTrening by vm.obserwujOstatniTrening(pojedyńczeĆwiczenie.id)
+                        .collectAsStateWithLifecycle(initialValue = null)
 
-                Text(
-                    text = if (ostatniTrening != null) {
-                        "Ostatnio: ${ostatniTrening!!.wyniki}"
-                    } else {
-                        "Ostatnio: brak danych"
-                    },
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                    Text(
+                        text = if (ostatniTrening != null) {
+                            "Ostatnio: ${ostatniTrening!!.wyniki}"
+                        } else {
+                            "Ostatnio: brak danych"
+                        },
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
 
-                // Lista wyników dla tego ćwiczenia (jeden Pair na serię)
-                val wynikiSerii = remember(pojedyńczeĆwiczenie.id) {
-                    mutableStateListOf<Pair<String, String>>().apply {
-                        repeat(pojedyńczeĆwiczenie.serie) { add("" to "") }
+                    // Lista wyników dla tego ćwiczenia (jeden Pair na serię)
+                    val wynikiSerii = remember(pojedyńczeĆwiczenie.id) {
+                        mutableStateListOf<Pair<String, String>>().apply {
+                            repeat(pojedyńczeĆwiczenie.serie) { add("" to "") }
+                        }
+                    }
+
+                    repeat(pojedyńczeĆwiczenie.serie) { IndeksSerii ->
+
+                        OutlinedTextField(
+                            value = wynikiSerii[IndeksSerii].first,
+                            onValueChange = { nowyCiezar ->
+                                wynikiSerii[IndeksSerii] =
+                                    wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
+                            },
+                            label = { Text("Podaj ciężar") },
+                            trailingIcon = {
+                                Text(
+                                    "Seria ${IndeksSerii + 1}",
+                                    modifier = Modifier.padding(end = 12.dp),
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        OutlinedTextField(
+                            value = wynikiSerii[IndeksSerii].second,
+                            onValueChange = { nowePowt ->
+                                wynikiSerii[IndeksSerii] =
+                                    wynikiSerii[IndeksSerii].copy(second = nowePowt)
+                            },
+                            label = { Text("Podaj ilość powtórzeń") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+                    }
+
+                    Button(
+                        onClick = {
+                            // Składamy wyniki w string typu "60×8, 60×7, 0×0"
+                            val tekstWynikow = wynikiSerii.joinToString(", ") { para ->
+                                val ciezar = para.first.ifBlank { "0" }
+                                val powt = para.second.ifBlank { "0" }
+                                "${ciezar}×${powt}"
+                            }
+                            vm.zapiszTrening(pojedyńczeĆwiczenie, tekstWynikow)
+
+                            // Czyścimy pola po zapisie
+                            repeat(pojedyńczeĆwiczenie.serie) { i ->
+                                wynikiSerii[i] = "" to ""
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.surface,
+                            contentColor = MaterialTheme.colorScheme.onSurface
+                        )
+
+                    ) {
+                        Text("Zapisz to ćwiczenie")
                     }
                 }
-
-                repeat(pojedyńczeĆwiczenie.serie) { IndeksSerii ->
-
-                    OutlinedTextField(
-                        value = wynikiSerii[IndeksSerii].first,
-                        onValueChange = { nowyCiezar ->
-                            wynikiSerii[IndeksSerii] =
-                                wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
-                        },
-                        label = { Text("Podaj ciężar") },
-                        trailingIcon = {
-                            Text(
-                                "Seria ${IndeksSerii + 1}",
-                                modifier = Modifier.padding(end = 12.dp),
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-
-                    OutlinedTextField(
-                        value = wynikiSerii[IndeksSerii].second,
-                        onValueChange = { nowePowt ->
-                            wynikiSerii[IndeksSerii] =
-                                wynikiSerii[IndeksSerii].copy(second = nowePowt)
-                        },
-                        label = { Text("Podaj ilość powtórzeń") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-                }
-
-                Button(
-                    onClick = {
-                        // Składamy wyniki w string typu "60×8, 60×7, 0×0"
-                        val tekstWynikow = wynikiSerii.joinToString(", ") { para ->
-                            val ciezar = para.first.ifBlank { "0" }
-                            val powt = para.second.ifBlank { "0" }
-                            "${ciezar}×${powt}"
-                        }
-                        vm.zapiszTrening(pojedyńczeĆwiczenie, tekstWynikow)
-
-                        // Czyścimy pola po zapisie
-                        repeat(pojedyńczeĆwiczenie.serie) { i ->
-                            wynikiSerii[i] = "" to ""
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.surface,
-                        contentColor = MaterialTheme.colorScheme.onSurface
-                    )
-
-                ) {
-                    Text("Zapisz to ćwiczenie")
-                }
-            }
                 Spacer(modifier = Modifier.height(24.dp))
             }
 

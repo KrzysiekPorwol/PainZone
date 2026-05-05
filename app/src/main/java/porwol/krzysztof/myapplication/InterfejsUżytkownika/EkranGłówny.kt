@@ -44,7 +44,11 @@ fun EkranGłówny(navController: NavController) {
 
             Spacer(Modifier.width(16.dp))
 
-            TekstMotywacyjny(modifier = Modifier.weight(1f))
+            MałyKafelek(
+                tekst = "Historia Treningów",
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate(Ekran.Wybor_Planu_Historii.trasa) }
+            )
         }
 
         Spacer(Modifier.weight(0.1f))
