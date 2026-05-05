@@ -1,6 +1,7 @@
 package porwol.krzysztof.myapplication.data
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -16,4 +17,7 @@ interface TreningDao {
 
     @Query("SELECT * FROM treningi WHERE `plan` = :plan ORDER BY data DESC")
     fun obserwujHistoriePlanu(plan: Plan): Flow<List<Trening>>
+
+    @Delete
+    suspend fun usun(trening: Trening)
 }

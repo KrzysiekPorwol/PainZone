@@ -1,13 +1,8 @@
 package porwol.krzysztof.myapplication.InterfejsUżytkownika.Komponenty
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -17,8 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
-import porwol.krzysztof.myapplication.data.Cwiczenie
-import porwol.krzysztof.myapplication.data.Plan
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Locale
+import kotlin.time.Instant
+
 
 @Composable
 fun PrzyciskPowrotuDoGłównegoEkranu(
@@ -29,8 +28,11 @@ fun PrzyciskPowrotuDoGłównegoEkranu(
     FloatingActionButton(
         onClick = {
             navController.navigate(Ekran.Główny_Ekran.trasa) {
-                popUpTo(Ekran.Główny_Ekran.trasa) {inclusive = true } // usun wszystkie ekrany ze stosu włacznie z tym.
-                launchSingleTop = true // usun ekran glowny ze stosu jesli juz istnieje (zeby nie bylo dwoch) (tutaj raczej niemozliwe, bo juz usunelismy wszystkie ekrany linijke wyzej)
+                popUpTo(Ekran.Główny_Ekran.trasa) {
+                    inclusive = true
+                } // usun wszystkie ekrany ze stosu włacznie z tym.
+                launchSingleTop =
+                    true // usun ekran glowny ze stosu jesli juz istnieje (zeby nie bylo dwoch) (tutaj raczej niemozliwe, bo juz usunelismy wszystkie ekrany linijke wyzej)
             }
         },
         modifier = modifier,
@@ -47,7 +49,7 @@ fun PrzyciskRozpocznijTrening(
     plan: String,
     modifier: Modifier = Modifier,
 ) {
-    FloatingActionButton (
+    FloatingActionButton(
         onClick = { navController.navigate(Ekran.Rozpocznij_Trening.zTrasa(plan)) },
         modifier = modifier,
         containerColor = MaterialTheme.colorScheme.surface,
@@ -59,13 +61,3 @@ fun PrzyciskRozpocznijTrening(
         )
     }
 }
-
-
-// Ten kod zostawiam tylko w roli przypomnienia jak działało kiedyś zapisywanie danych.
-//fun dodajĆwiczenieDoPlanu(plan: String, cwiczenie: Cwiczenie) {
-//    when (plan) {
-//        "Plan A" -> TymczasowyZestawPlanówĆwiczeń.planA.add(cwiczenie)
-//        "Plan B" -> TymczasowyZestawPlanówĆwiczeń.planB.add(cwiczenie)
-//        "Plan C" -> TymczasowyZestawPlanówĆwiczeń.planC.add(cwiczenie)
-//    }
-//}

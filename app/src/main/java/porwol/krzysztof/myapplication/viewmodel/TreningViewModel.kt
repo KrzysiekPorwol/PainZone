@@ -53,4 +53,11 @@ class TreningViewModel(app: Application) : AndroidViewModel(app) {
 
     fun obserwujOstatniTrening(cwiczenieId: Long): Flow<Trening?> =
         treningDao.obserwujOstatniDlaCwiczenia(cwiczenieId)
+
+    fun obserwujHistoriePlanu(plan: Plan): Flow<List<Trening>> =
+        treningDao.obserwujHistoriePlanu(plan)
+
+    fun usunTrening(trening: Trening) = viewModelScope.launch {
+        treningDao.usun(trening)
+    }
 }

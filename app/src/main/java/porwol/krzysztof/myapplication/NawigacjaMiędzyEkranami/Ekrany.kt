@@ -18,4 +18,10 @@ sealed class Ekran(val trasa: String) {
     object Rozpocznij_Trening : Ekran("ekran_rozpocznij_trening/{plan}") {
         fun zTrasa(plan: String) = "ekran_rozpocznij_trening/$plan"
     }
+
+    object Wybor_Planu_Historii : Ekran("ekran_wyboru_planu_historii")
+
+    object Historia_Planu : Ekran("ekran_historia_planu/{plan}") {
+        fun zTrasa(plan: String) = "ekran_historia_planu/$plan"
+    }
 }

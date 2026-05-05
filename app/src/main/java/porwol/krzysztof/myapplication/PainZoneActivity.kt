@@ -11,15 +11,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranRozpocznijTrening
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranEdytujĆwiczenia
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranGłówny
-import porwol.krzysztof.myapplication.ui.theme.MyApplicationTheme
-import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranHistoriiPlanu
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanA
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanB
 import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranPlanC
-import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranEdytujĆwiczenia
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranRozpocznijTrening
+import porwol.krzysztof.myapplication.InterfejsUżytkownika.EkranWyboruPlanuHistorii
+import porwol.krzysztof.myapplication.NawigacjaMiędzyEkranami.Ekran
 import porwol.krzysztof.myapplication.data.Plan
+import porwol.krzysztof.myapplication.ui.theme.MyApplicationTheme
 
 
 class PainZoneActivity :
@@ -69,14 +71,24 @@ fun PainZoneNavHost(navController: NavHostController) {
         composable(Ekran.Edytuj_Ćwiczenia.trasa) {
             EkranEdytujĆwiczenia(navController)
         }
-
         composable(
             route = Ekran.Rozpocznij_Trening.trasa,
             arguments = listOf(navArgument("plan") { type = NavType.StringType })
         ) { backStackEntry ->
             val planNazwa = backStackEntry.arguments?.getString("plan") ?: "A"
             val plan = Plan.valueOf(planNazwa)
-             EkranRozpocznijTrening(plan = plan, navController = navController)
+            EkranRozpocznijTrening(plan = plan, navController = navController)
+        }
+        composable(Ekran.Wybor_Planu_Historii.trasa) {
+            EkranWyboruPlanuHistorii(navController)
+        }
+        composable(
+            route = Ekran.Historia_Planu.trasa,
+            arguments = listOf(navArgument("plan") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val planNazwa = backStackEntry.arguments?.getString("plan") ?: "A"
+            val plan = Plan.valueOf(planNazwa)
+            EkranHistoriiPlanu(plan = plan, navController = navController)
         }
     }
 }
