@@ -63,7 +63,8 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
             OutlinedTextField(
                 value = serie,
                 onValueChange = { nowa ->
-                    if (nowa.all { it.isDigit() }) serie = nowa.take(2) },
+                    if (nowa.all { it.isDigit() }) serie = nowa.take(2)
+                },
                 label = { Text("Ilość serii") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
@@ -120,7 +121,7 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                         .weight(1f)
                 ) {
                     Button(
-                        onClick = { wybranyPlan = "C"},
+                        onClick = { wybranyPlan = "C" },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomEnd)
@@ -160,24 +161,6 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                             navController.popBackStack()
                         },
 
-
-//                    Button( ZAPISANIE PLIKOW DO ZMIENNEJ Z LISTAMI CWICZEN. PRZED ROOM I VIEWMODEL.
-//
-////                        onClick = {
-////                            val noweCwiczenie = Cwiczenie(
-////                                nazwa = nazwa,
-////                                serie = serie.toInt(),
-////                                plan = Plan.valueOf(wybranyPlan)
-////                            )
-////
-////                            dodajĆwiczenieDoPlanu(wybranyPlan, noweCwiczenie)
-////
-////                            println("Plan A:" + TymczasowyZestawPlanówĆwiczeń.planA)
-////
-////                            navController.popBackStack()
-////
-////
-////                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .align(Alignment.BottomCenter)
