@@ -158,3 +158,14 @@
    na czytelny zapis dla człowieka.
 9. Wprowadzono możliwość usuwania cwiczenia z historii treningu
    poprzez dluższe przytrzymanie carda z danym cwiczeniem.
+
+
+**2026-05-06**
+1. Zmiana palety kolorów oraz typów w pliku Theme, Color, Type.kt.
+2. Zastosowanie nowych kolorow i typów w ekranach oraz komponentach.
+3. Naniesienie poprawek wizualnych min. dodanie grafik, poprawa
+   paddingu, zastosowanie ograniczen co do obrotu ekranu (apka tylko na telefony).
+
+## 4. MVP aplikacji osiągniety.
+
+

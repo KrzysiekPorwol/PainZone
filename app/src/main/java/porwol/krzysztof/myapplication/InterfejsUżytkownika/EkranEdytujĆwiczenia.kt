@@ -9,9 +9,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -22,7 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -35,30 +38,45 @@ import porwol.krzysztof.myapplication.viewmodel.TreningViewModel
 fun EkranEdytujĆwiczenia(navController: NavController) {
 
     val vm: TreningViewModel = viewModel()
-    //Stan dla wybranego planu
     var wybranyPlan by remember { mutableStateOf("A") }
-
-    // Stan dla pól tekstowych
     var nazwa by remember { mutableStateOf("") }
     var serie by remember { mutableStateOf("") }
 
-    Box() {
-
+    Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(color = MaterialTheme.colorScheme.background)
-                .padding(16.dp)
+                .padding(20.dp)
         ) {
+            Spacer(modifier = Modifier.height(40.dp))
+
+            // Nagłówek
+            Text(
+                "EDYCJA",
+                color = MaterialTheme.colorScheme.secondary,
+                style = MaterialTheme.typography.displayMedium
+            )
+            Text(
+                "dodaj ćwiczenie do planu",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodyLarge
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Pole nazwy ćwiczenia
             OutlinedTextField(
                 value = nazwa,
-                onValueChange = { nazwa = it.take(17) },
-                label = { Text("Nazwa Ćwiczenia (maks 17 znaków)") },
+                placeholder = { Text("Maksymalnie 30 znaków") },
+                onValueChange = { nazwa = it.take(30) },
+                label = { Text("Nazwa ćwiczenia") },
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
+            // Pole liczby serii
             OutlinedTextField(
                 value = serie,
                 onValueChange = { nowa ->
@@ -69,113 +87,74 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.weight(0.1f))
+            Spacer(modifier = Modifier.height(32.dp))
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    Button(
-                        onClick = { wybranyPlan = "A" },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.BottomStart)
-                            .padding(10.dp)
-                            .alpha(
-                                if (wybranyPlan == "A") 1f else 0.5f
-                            ),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.surface,
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
+            // Wybór planu
+            Text(
+                "WYBIERZ PLAN",
+                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.titleMedium
+            )
 
-                    ) { Text("Plan A") }
-                }
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    Button(
-                        onClick = { wybranyPlan = "B" },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.BottomCenter)
-                            .padding(10.dp)
-                            .alpha(
-                                if (wybranyPlan == "B") 1f else 0.5f
-                            ),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.surface,
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
+            Spacer(modifier = Modifier.height(12.dp))
 
-                    ) { Text("Plan B") }
-                }
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    Button(
-                        onClick = { wybranyPlan = "C" },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.BottomEnd)
-                            .padding(10.dp)
-                            .alpha(
-                                if (wybranyPlan == "C") 1f else 0.5f
-                            ),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.surface,
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
-
-                    ) { Text("Plan C") }
-                }
+            Row(modifier = Modifier.fillMaxWidth()) {
+                PrzyciskWyboruPlanu(
+                    nazwa = "A",
+                    wybrany = wybranyPlan == "A",
+                    onClick = { wybranyPlan = "A" },
+                    modifier = Modifier.weight(1f)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                PrzyciskWyboruPlanu(
+                    nazwa = "B",
+                    wybrany = wybranyPlan == "B",
+                    onClick = { wybranyPlan = "B" },
+                    modifier = Modifier.weight(1f)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                PrzyciskWyboruPlanu(
+                    nazwa = "C",
+                    wybrany = wybranyPlan == "C",
+                    onClick = { wybranyPlan = "C" },
+                    modifier = Modifier.weight(1f)
+                )
             }
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Row(
+            // Przycisk Zapisz — duży, na dole
+            Button(
+                onClick = {
+                    if (nazwa.isNotBlank() && serie.isNotBlank()) {
+                        vm.dodaj(
+                            nazwa = nazwa,
+                            serie = serie.toInt(),
+                            plan = Plan.valueOf(wybranyPlan)
+                        )
+                        navController.popBackStack()
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp, end = 20.dp)
+                    .padding(bottom = 80.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                )
             ) {
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-
-                    Button(
-                        onClick = {
-                            vm.dodaj(
-                                nazwa = nazwa,
-                                serie = serie.toInt(),
-                                plan = Plan.valueOf(wybranyPlan)
-                            )
-
-                            navController.popBackStack()
-                        },
-
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .align(Alignment.BottomCenter)
-                            .padding(10.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.surface,
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
-
-                    ) { Text("Zapisz") }
-                }
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = null
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    "ZAPISZ ĆWICZENIE",
+                    style = MaterialTheme.typography.titleMedium
+                )
             }
-
-            Spacer(modifier = Modifier.weight(0.15f))
-
         }
+
         PrzyciskPowrotuDoGłównegoEkranu(
             navController,
             modifier = Modifier
@@ -183,6 +162,34 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                 .align(Alignment.BottomEnd)
         )
     }
-
 }
 
+@Composable
+private fun PrzyciskWyboruPlanu(
+    nazwa: String,
+    wybrany: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier
+) {
+    Button(
+        onClick = onClick,
+        modifier = modifier,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = if (wybrany) {
+                MaterialTheme.colorScheme.primary
+            } else {
+                MaterialTheme.colorScheme.surface
+            },
+            contentColor = if (wybrany) {
+                MaterialTheme.colorScheme.onPrimary
+            } else {
+                MaterialTheme.colorScheme.onSurface
+            }
+        )
+    ) {
+        Text(
+            "PLAN $nazwa",
+            style = MaterialTheme.typography.titleMedium
+        )
+    }
+}

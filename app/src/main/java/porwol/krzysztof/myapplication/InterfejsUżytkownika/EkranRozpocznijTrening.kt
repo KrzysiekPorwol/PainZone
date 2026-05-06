@@ -3,16 +3,24 @@ package porwol.krzysztof.myapplication.InterfejsUżytkownika
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -54,112 +62,160 @@ fun EkranRozpocznijTrening(
                 .padding(20.dp)
                 .verticalScroll(stanScrolla)
         ) {
-            Spacer(modifier = Modifier.height(70.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
+            // Nagłówek
             Text(
-                "Plan $plan — Trening",
-                color = MaterialTheme.colorScheme.onSurface
+                "TRENING",
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.displayMedium
+            )
+            Text(
+                "plan $plan",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodyLarge
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             if (cwiczenia.isEmpty()) {
-                Text(
-                    "Lista ćwiczeń w tym planie jest pusta.",
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.FitnessCenter,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(64.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        "BRAK ĆWICZEŃ",
+                        color = MaterialTheme.colorScheme.onSurface,
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                    Text(
+                        "dodaj ćwiczenia w sekcji edycji",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
             } else {
                 cwiczenia.forEach { pojedyńczeĆwiczenie ->
-                    Text(
-                        "${pojedyńczeĆwiczenie.nazwa}",
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-
-                    val ostatniTrening by vm.obserwujOstatniTrening(pojedyńczeĆwiczenie.id)
-                        .collectAsStateWithLifecycle(initialValue = null)
-
-                    Text(
-                        text = if (ostatniTrening != null) {
-                            "Ostatnio: ${ostatniTrening!!.wyniki}"
-                        } else {
-                            "Ostatnio: brak danych"
-                        },
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-
-                    // Lista wyników dla tego ćwiczenia (jeden Pair na serię)
-                    val wynikiSerii = remember(pojedyńczeĆwiczenie.id) {
-                        mutableStateListOf<Pair<String, String>>().apply {
-                            repeat(pojedyńczeĆwiczenie.serie) { add("" to "") }
-                        }
-                    }
-
-                    repeat(pojedyńczeĆwiczenie.serie) { IndeksSerii ->
-
-                        OutlinedTextField(
-                            value = wynikiSerii[IndeksSerii].first,
-                            onValueChange = { nowyCiezar ->
-                                wynikiSerii[IndeksSerii] =
-                                    wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
-                            },
-                            label = { Text("Podaj ciężar") },
-                            trailingIcon = {
-                                Text(
-                                    "Seria ${IndeksSerii + 1}",
-                                    modifier = Modifier.padding(end = 12.dp),
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            modifier = Modifier.fillMaxWidth()
-                        )
-
-                        OutlinedTextField(
-                            value = wynikiSerii[IndeksSerii].second,
-                            onValueChange = { nowePowt ->
-                                wynikiSerii[IndeksSerii] =
-                                    wynikiSerii[IndeksSerii].copy(second = nowePowt)
-                            },
-                            label = { Text("Podaj ilość powtórzeń") },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            modifier = Modifier.fillMaxWidth()
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-                    }
-
-                    Button(
-                        onClick = {
-                            // Składamy wyniki w string typu "60×8, 60×7, 0×0"
-                            val tekstWynikow = wynikiSerii.joinToString(", ") { para ->
-                                val ciezar = para.first.ifBlank { "0" }
-                                val powt = para.second.ifBlank { "0" }
-                                "${ciezar}×${powt}"
-                            }
-                            vm.zapiszTrening(pojedyńczeĆwiczenie, tekstWynikow)
-
-                            // Czyścimy pola po zapisie
-                            repeat(pojedyńczeĆwiczenie.serie) { i ->
-                                wynikiSerii[i] = "" to ""
-                            }
-                        },
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surface
+                        ),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(12.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.surface,
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
-
+                            .padding(vertical = 8.dp)
                     ) {
-                        Text("Zapisz to ćwiczenie")
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            // Nazwa ćwiczenia
+                            Text(
+                                pojedyńczeĆwiczenie.nazwa.uppercase(),
+                                color = MaterialTheme.colorScheme.onSurface,
+                                style = MaterialTheme.typography.titleLarge
+                            )
+
+                            // "Ostatnio:" w pomarańczu
+                            val ostatniTrening by vm.obserwujOstatniTrening(pojedyńczeĆwiczenie.id)
+                                .collectAsStateWithLifecycle(initialValue = null)
+
+                            Text(
+                                text = if (ostatniTrening != null) {
+                                    "ostatnio: ${ostatniTrening!!.wyniki}"
+                                } else {
+                                    "ostatnio: brak danych"
+                                },
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                            // Pola serii
+                            val wynikiSerii = remember(pojedyńczeĆwiczenie.id) {
+                                mutableStateListOf<Pair<String, String>>().apply {
+                                    repeat(pojedyńczeĆwiczenie.serie) { add("" to "") }
+                                }
+                            }
+
+                            repeat(pojedyńczeĆwiczenie.serie) { IndeksSerii ->
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(
+                                        "${IndeksSerii + 1}.",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        style = MaterialTheme.typography.titleMedium,
+                                        modifier = Modifier.width(24.dp)
+                                    )
+
+                                    OutlinedTextField(
+                                        value = wynikiSerii[IndeksSerii].first,
+                                        onValueChange = { nowyCiezar ->
+                                            wynikiSerii[IndeksSerii] =
+                                                wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
+                                        },
+                                        label = { Text("kg") },
+                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                        modifier = Modifier.weight(1f)
+                                    )
+
+                                    Spacer(modifier = Modifier.width(8.dp))
+
+                                    OutlinedTextField(
+                                        value = wynikiSerii[IndeksSerii].second,
+                                        onValueChange = { nowePowt ->
+                                            wynikiSerii[IndeksSerii] =
+                                                wynikiSerii[IndeksSerii].copy(second = nowePowt)
+                                        },
+                                        label = { Text("powt.") },
+                                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.height(8.dp))
+                            }
+
+                            Spacer(modifier = Modifier.height(8.dp))
+
+                            // Przycisk Zapisz
+                            Button(
+                                onClick = {
+                                    val tekstWynikow = wynikiSerii.joinToString(", ") { para ->
+                                        val ciezar = para.first.ifBlank { "0" }
+                                        val powt = para.second.ifBlank { "0" }
+                                        "${ciezar}×${powt}"
+                                    }
+                                    vm.zapiszTrening(pojedyńczeĆwiczenie, tekstWynikow)
+
+                                    repeat(pojedyńczeĆwiczenie.serie) { i ->
+                                        wynikiSerii[i] = "" to ""
+                                    }
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = MaterialTheme.colorScheme.primary,
+                                    contentColor = MaterialTheme.colorScheme.onPrimary
+                                )
+                            ) {
+                                Text(
+                                    "ZAPISZ",
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                            }
+                        }
                     }
                 }
-                Spacer(modifier = Modifier.height(24.dp))
             }
 
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(100.dp))
         }
 
         PrzyciskPowrotuDoGłównegoEkranu(
