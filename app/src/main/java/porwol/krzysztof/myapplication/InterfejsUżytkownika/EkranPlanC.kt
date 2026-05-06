@@ -10,10 +10,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,54 +50,93 @@ fun EkranPlanC(navController: NavController) {
                 .verticalScroll(stanScrolla)
         ) {
 
-            Spacer(modifier = Modifier.height(70.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
+            // Nagłówek
             Text(
-                "Plan C - Ćwiczenia",
-                color = MaterialTheme.colorScheme.onSurface
+                "PLAN C",
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.displayMedium
+            )
+            Text(
+                "twój trening",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodyLarge
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             if (listaĆwiczeń.isEmpty()) {
-                Text(
-                    "Brak ćwiczeń w planie.",
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                // Pusta lista — z ikoną
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.FitnessCenter,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(64.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        "BRAK ĆWICZEŃ",
+                        color = MaterialTheme.colorScheme.onSurface,
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                    Text(
+                        "dodaj pierwsze w sekcji edycji",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
             } else {
                 listaĆwiczeń.forEach { pojedyńczeĆwiczenie ->
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.primary
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 6.dp)
                     ) {
-                        Column() {
-                            Text(
-                                "- ${pojedyńczeĆwiczenie.nazwa} ",
-                                color = MaterialTheme.colorScheme.onSurface,
-                            )
-                            Text(
-                                "- Ilość serii: ${pojedyńczeĆwiczenie.serie} ",
-                                color = MaterialTheme.colorScheme.onSurface
-                            )
-                        }
-
-                        Button(
-                            onClick = { vm.usun(pojedyńczeĆwiczenie) },
-
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.surface,
-                                contentColor = MaterialTheme.colorScheme.onSurface
-                            )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text("Usuń")
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    pojedyńczeĆwiczenie.nazwa.uppercase(),
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    style = MaterialTheme.typography.titleLarge
+                                )
+                                Text(
+                                    "${pojedyńczeĆwiczenie.serie} serie",
+                                    color = MaterialTheme.colorScheme.onPrimary,
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                            }
+
+                            IconButton(
+                                onClick = { vm.usun(pojedyńczeĆwiczenie) }
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Delete,
+                                    contentDescription = "Usuń",
+                                    tint = MaterialTheme.colorScheme.onPrimary
+                                )
+                            }
                         }
                     }
-                    Spacer(Modifier.height(30.dp))
                 }
             }
 
-            Spacer(Modifier.height(80.dp))
+            Spacer(Modifier.height(100.dp))
 
         }
 

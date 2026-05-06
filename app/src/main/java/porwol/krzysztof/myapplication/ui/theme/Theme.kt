@@ -6,24 +6,19 @@ import androidx.compose.runtime.Composable
 
 private val MyColorScheme = darkColorScheme(
     background = CzarneTło,
-    surface = Pomarańczowy,
+    surface = CzarneSurface,
+    surfaceVariant = CzarneSurfaceWyższe,
+    primary = SpalonyPomarańczowy,
+    onPrimary = CzarnyTekstNaPomarańczu,
+    secondary = KrwistaCzerwień,
+    onSecondary = BiałyTekst,
     onSurface = BiałyTekst,
+    onSurfaceVariant = SzaryTekst,
     onBackground = BiałyTekst
 )
 
-/* Other default colors to override
-background = Color(0xFFFFFBFE),
-surface = Color(0xFFFFFBFE),
-onPrimary = Color.White,
-onSecondary = Color.White,
-onTertiary = Color.White,
-onBackground = Color(0xFF1C1B1F),
-onSurface = Color(0xFF1C1B1F),
-*/
-
 @Composable
 fun MyApplicationTheme(content: @Composable () -> Unit) {
-
     MaterialTheme(
         colorScheme = MyColorScheme,
         typography = Typography,

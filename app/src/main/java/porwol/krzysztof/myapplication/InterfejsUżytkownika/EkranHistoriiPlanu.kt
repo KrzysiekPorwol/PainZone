@@ -10,11 +10,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -58,20 +62,48 @@ fun EkranHistoriiPlanu(
                 .padding(20.dp)
                 .verticalScroll(stanScrolla)
         ) {
-            Spacer(modifier = Modifier.height(70.dp))
+            Spacer(modifier = Modifier.height(40.dp))
 
+            // Nagłówek
             Text(
-                "Historia — Plan $plan",
-                color = MaterialTheme.colorScheme.onSurface
+                "HISTORIA",
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.displayMedium
+            )
+            Text(
+                "plan $plan",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                style = MaterialTheme.typography.bodyLarge
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             if (historia.isEmpty()) {
-                Text(
-                    "Brak treningów dla tego planu.",
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                // Pusta historia — z ikoną
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(32.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.History,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(64.dp)
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        "BRAK TRENINGÓW",
+                        color = MaterialTheme.colorScheme.onSurface,
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                    Text(
+                        "rozpocznij pierwszy trening w planie",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
             } else {
                 historia.forEach { trening ->
                     Card(
@@ -80,33 +112,36 @@ fun EkranHistoriiPlanu(
                         ),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 4.dp)
+                            .padding(vertical = 6.dp)
                             .combinedClickable(
-                                onClick = { /* Nic nie robi, bo tylko gdy przytrzymamy */ },
+                                onClick = { /* Nic nie robi, tylko long press */ },
                                 onLongClick = { treningDoUsuniecia = trening }
                             ),
                     ) {
-                        Column(modifier = Modifier.padding(12.dp)) {
+                        Column(modifier = Modifier.padding(16.dp)) {
                             Text(
-                                "${sformatujDate(trening.data)}",
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                sformatujDate(trening.data),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                style = MaterialTheme.typography.bodySmall
                             )
+                            Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                trening.cwiczenieNazwa,
-                                color = MaterialTheme.colorScheme.onSurface
+                                trening.cwiczenieNazwa.uppercase(),
+                                color = MaterialTheme.colorScheme.onSurface,
+                                style = MaterialTheme.typography.titleLarge
                             )
+                            Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                "Wyniki: ${trening.wyniki}",
-                                color = MaterialTheme.colorScheme.onSurface
+                                trening.wyniki,
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.titleMedium
                             )
                         }
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.height(80.dp))
-
-
+            Spacer(modifier = Modifier.height(100.dp))
         }
 
         PrzyciskPowrotuDoGłównegoEkranu(
@@ -120,7 +155,7 @@ fun EkranHistoriiPlanu(
         if (treningDoUsuniecia != null) {
             AlertDialog(
                 onDismissRequest = { treningDoUsuniecia = null },
-                title = { Text("Usunąć to ćwiczenie?") },
+                title = { Text("Usunąć ten trening?") },
                 text = { Text("Ta operacja jest nieodwracalna.") },
                 confirmButton = {
                     TextButton(
@@ -129,7 +164,10 @@ fun EkranHistoriiPlanu(
                             treningDoUsuniecia = null
                         }
                     ) {
-                        Text("Usuń")
+                        Text(
+                            "Usuń",
+                            color = MaterialTheme.colorScheme.secondary  // czerwień!
+                        )
                     }
                 },
                 dismissButton = {
