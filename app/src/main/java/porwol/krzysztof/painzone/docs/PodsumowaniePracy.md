@@ -179,4 +179,6 @@
 4. Ocena pozostałych ostrzeżeń lintera - pominięcie aktualizacji
    bibliotek bez konkretnej potrzeby.
 5. Stworzenie pierwszego unit testu - sprawdzenie funkcji w Formatters.kt.
-6. Stworzono 3 kolejne testy dla Formatters.kt.
+6. Stworzono 3 kolejne unit testy dla Formatters.kt.
+7. Stworzono 5 unit testów dla Cwiczenie.kt.
+8. Dodano własną ikonę aplikacji.
