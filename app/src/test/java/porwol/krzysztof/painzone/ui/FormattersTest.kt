@@ -1,10 +1,7 @@
 package porwol.krzysztof.painzone.ui
 
+import org.junit.Assert
 import org.junit.Test
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotEquals
-import org.junit.Assert.assertTrue
-import org.junit.Assert.assertNotNull
 
 class FormattersTest {
 
@@ -17,15 +14,15 @@ class FormattersTest {
         val wynik = sformatujDate(timestamp)
 
         // Assert (sprawdź wynik)
-        assertNotNull(wynik)
-        assertTrue("Wynik powinien być niepusty", wynik.isNotEmpty())
+        Assert.assertNotNull(wynik)
+        Assert.assertTrue("Wynik powinien być niepusty", wynik.isNotEmpty())
     }
 
     @Test
     fun `sformatujDate dla timestampa 0 zwraca date z 1970 roku`() {
         val timestamp = 0L
         val wynik = sformatujDate(timestamp)
-        assertTrue(
+        Assert.assertTrue(
             "Wynik powinien zawierać 1970, ale jest: $wynik",
             wynik.contains("1970")
         )
@@ -35,7 +32,7 @@ class FormattersTest {
     fun `sformatujDate zawiera dwukropek dla godziny`() {
         val timestamp = 1746619200000L
         val wynik = sformatujDate(timestamp)
-        assertTrue(
+        Assert.assertTrue(
             "Wynik powinien zawierać dwukropek (HH:mm), ale jest: $wynik",
             wynik.contains(":")
         )
@@ -49,7 +46,7 @@ class FormattersTest {
         val wynik1 = sformatujDate(timestamp1)
         val wynik2 = sformatujDate(timestamp2)
 
-        assertNotEquals(
+        Assert.assertNotEquals(
             "Różne timestampy powinny zwracać różne wyniki",
             wynik1,
             wynik2
