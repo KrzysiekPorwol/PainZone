@@ -173,3 +173,10 @@
 1. Rozpoczęcie przeprowadzania testów aplikacji oraz optymalizacji.
    Zrobiono Code > inspekt code.
 2. Refaktoryzacja folderów w projekcie zgodnie z normami.
+3. Wyniki Inspect Code - usunięcie zbędnego `android:label`
+   z aktywności, wyciszenie warninga o orientacji ekranu
+   (świadoma decyzja projektowa).
+4. Ocena pozostałych ostrzeżeń lintera - pominięcie aktualizacji
+   bibliotek bez konkretnej potrzeby.
+5. Stworzenie pierwszego unit testu - sprawdzenie funkcji w Formatters.kt.
+6. Stworzono 3 kolejne testy dla Formatters.kt.

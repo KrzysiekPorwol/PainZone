@@ -1,4 +1,4 @@
-package porwol.krzysztof.painzone.ui.screens.Komponenty
+package porwol.krzysztof.painzone.ui.screens.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons

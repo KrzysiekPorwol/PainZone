@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import porwol.krzysztof.painzone.ui.screens.Komponenty.`PrzyciskPowrotuDoGłównegoEkranu`
-import porwol.krzysztof.painzone.ui.screens.Komponenty.PrzyciskRozpocznijTrening
+import porwol.krzysztof.painzone.ui.screens.components.`PrzyciskPowrotuDoGłównegoEkranu`
+import porwol.krzysztof.painzone.ui.screens.components.PrzyciskRozpocznijTrening
 import porwol.krzysztof.painzone.viewmodel.TreningViewModel
 
 @Composable

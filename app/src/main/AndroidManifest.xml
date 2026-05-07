@@ -15,9 +15,9 @@
         <activity
             android:name=".PainZoneActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity">
             <!-- Swiadomie blokuje opcje obrotu ekranu /\ -->
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />

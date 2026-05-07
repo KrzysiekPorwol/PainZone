@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import porwol.krzysztof.painzone.ui.screens.Komponenty.`PrzyciskPowrotuDoGłównegoEkranu`
+import porwol.krzysztof.painzone.ui.screens.components.`PrzyciskPowrotuDoGłównegoEkranu`
 import porwol.krzysztof.painzone.ui.navigation.Ekran
 
 @Composable

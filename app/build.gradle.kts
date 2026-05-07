@@ -10,7 +10,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "porwol.krzysztof.myapplication"
+        applicationId = "porwol.krzysztof.painzone"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

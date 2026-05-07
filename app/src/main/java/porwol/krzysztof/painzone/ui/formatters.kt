@@ -1,4 +1,4 @@
-package porwol.krzysztof.painzone.InterfejsUzytkownika
+package porwol.krzysztof.painzone.ui
 
 import java.time.LocalDateTime
 import java.time.ZoneId
