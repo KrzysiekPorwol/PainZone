@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "porwol.krzysztof.myapplication"
+    namespace = "porwol.krzysztof.painzone"
     compileSdk = 35
 
     defaultConfig {
