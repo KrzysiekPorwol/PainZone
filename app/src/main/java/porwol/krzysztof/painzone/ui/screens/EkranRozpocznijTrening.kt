@@ -159,8 +159,13 @@ fun EkranRozpocznijTrening(
                                     OutlinedTextField(
                                         value = wynikiSerii[IndeksSerii].first,
                                         onValueChange = { nowyCiezar ->
-                                            wynikiSerii[IndeksSerii] =
-                                                wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
+                                            if (nowyCiezar.all { it.isDigit() }) {
+                                                val liczba = nowyCiezar.toIntOrNull() ?: 0
+                                                if (liczba <= 999) {
+                                                    wynikiSerii[IndeksSerii] =
+                                                        wynikiSerii[IndeksSerii].copy(first = nowyCiezar)
+                                                }
+                                            }
                                         },
                                         label = { Text("kg") },
                                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -172,8 +177,13 @@ fun EkranRozpocznijTrening(
                                     OutlinedTextField(
                                         value = wynikiSerii[IndeksSerii].second,
                                         onValueChange = { nowePowt ->
-                                            wynikiSerii[IndeksSerii] =
-                                                wynikiSerii[IndeksSerii].copy(second = nowePowt)
+                                            if (nowePowt.all { it.isDigit() }) {
+                                                val liczba = nowePowt.toIntOrNull() ?: 0
+                                                if (liczba <= 999) {
+                                                    wynikiSerii[IndeksSerii] =
+                                                        wynikiSerii[IndeksSerii].copy(second = nowePowt)
+                                                }
+                                            }
                                         },
                                         label = { Text("powt.") },
                                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),

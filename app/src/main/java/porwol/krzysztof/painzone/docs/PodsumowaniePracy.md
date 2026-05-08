@@ -186,3 +186,5 @@
 
 **2026-05-08**
 1. Dodano walidację - maksymalna ilość serii w ćwiczeniu to 20.
+2. Dodano walidację - podczas wprowadzaania cwiczenia można 
+   wpisać tylko cyfry (maksymalnie 999 powt i ciezaru).
