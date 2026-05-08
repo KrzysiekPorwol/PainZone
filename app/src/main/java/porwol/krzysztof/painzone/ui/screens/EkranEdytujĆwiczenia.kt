@@ -20,9 +20,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,17 +32,31 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import porwol.krzysztof.painzone.ui.screens.components.`PrzyciskPowrotuDoGłównegoEkranu`
+import kotlinx.coroutines.launch
 import porwol.krzysztof.painzone.data.Plan
+import porwol.krzysztof.painzone.ui.screens.components.PrzyciskPowrotuDoGłównegoEkranu
 import porwol.krzysztof.painzone.viewmodel.TreningViewModel
 
 @Composable
 fun EkranEdytujĆwiczenia(navController: NavController) {
 
+    val scope = rememberCoroutineScope()
     val vm: TreningViewModel = viewModel()
     var wybranyPlan by remember { mutableStateOf("A") }
     var nazwa by remember { mutableStateOf("") }
     var serie by remember { mutableStateOf("") }
+    var bladLimitu by remember { mutableStateOf(false) }
+    var dodanoPomyslnie by remember { mutableStateOf(false) }
+
+
+    LaunchedEffect(wybranyPlan) { bladLimitu = false }
+
+    if (dodanoPomyslnie) {
+        LaunchedEffect(Unit) {
+            kotlinx.coroutines.delay(1000)
+            navController.popBackStack()
+        }
+    }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -126,18 +142,52 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
                 )
             }
 
+            if (bladLimitu) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    "Plan $wybranyPlan ma już 10 ćwiczeń — usuń coś, żeby dodać nowe!",
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+
+            if (dodanoPomyslnie) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    "Dodano pomyślnie!",
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+
+            if (bladLimitu) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    "Plan $wybranyPlan ma już 10 ćwiczeń — usuń coś, żeby dodać nowe!",
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+
             Spacer(modifier = Modifier.weight(1f))
 
             // Przycisk Zapisz — duży, na dole
             Button(
                 onClick = {
-                    if (nazwa.isNotBlank() && serie.isNotBlank()) {
-                        vm.dodaj(
-                            nazwa = nazwa,
-                            serie = serie.toInt(),
-                            plan = Plan.valueOf(wybranyPlan)
-                        )
-                        navController.popBackStack()
+                    val iloscSerii = serie.toIntOrNull() ?: 0
+                    if (nazwa.isNotBlank() && iloscSerii in 1..20) {
+                        scope.launch {
+                            val zapisano = vm.dodaj(
+                                nazwa = nazwa,
+                                serie = iloscSerii,
+                                plan = Plan.valueOf(wybranyPlan)
+                            )
+                            if (zapisano) {
+                                dodanoPomyslnie = true
+                            } else {
+                                bladLimitu = true
+                            }
+                        }
                     }
                 },
                 modifier = Modifier

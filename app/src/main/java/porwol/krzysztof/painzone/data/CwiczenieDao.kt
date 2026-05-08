@@ -18,4 +18,7 @@ interface CwiczenieDao {
     @Delete
     suspend fun usun(cwiczenie: Cwiczenie)
 
+    @Query("SELECT COUNT(*) FROM cwiczenia WHERE plan = :plan")
+    suspend fun policzWPlanie(plan: Plan): Int
+
 }
