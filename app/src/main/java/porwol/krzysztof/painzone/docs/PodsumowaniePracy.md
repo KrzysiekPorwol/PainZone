@@ -182,3 +182,7 @@
 6. Stworzono 3 kolejne unit testy dla Formatters.kt.
 7. Stworzono 5 unit testów dla Cwiczenie.kt.
 8. Dodano własną ikonę aplikacji.
+
+
+**2026-05-08**
+1. Dodano walidację - maksymalna ilość serii w ćwiczeniu to 20.

@@ -79,8 +79,13 @@ fun EkranEdytujĆwiczenia(navController: NavController) {
             // Pole liczby serii
             OutlinedTextField(
                 value = serie,
+                placeholder = { Text("Maksymalna ilość serii to 20.") },
                 onValueChange = { nowa ->
-                    if (nowa.all { it.isDigit() }) serie = nowa.take(2)
+                    if (nowa.all { it.isDigit() }) {
+                        val liczba = nowa.toIntOrNull() ?: 0
+                        if (liczba <= 20) serie = nowa.take(2)
+
+                    }
                 },
                 label = { Text("Ilość serii") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
