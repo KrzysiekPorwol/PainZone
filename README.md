@@ -12,9 +12,11 @@ All code in this repository was written by me, from scratch. Every line is mine 
 
 ## App preview
 
-![Main screen](app/src/main/java/porwol/krzysztof/painzone/screenshots/EkranGłówny.jpg)
-![Exercise editing](app/src/main/java/porwol/krzysztof/painzone/screenshots/EdycjaTreningu.jpg)
-![Workout screen](app/src/main/java/porwol/krzysztof/painzone/screenshots/StartTreningu.jpg)
+<p>
+<img src="app/src/main/java/porwol/krzysztof/painzone/screenshots/EkranGłówny.jpg" width="250"/>
+<img src="app/src/main/java/porwol/krzysztof/painzone/screenshots/EdycjaTreningu.jpg" width="250"/>
+<img src="app/src/main/java/porwol/krzysztof/painzone/screenshots/StartTreningu.jpg" width="250"/>
+</p>
 
 ## Features
 
@@ -63,9 +65,11 @@ Cały kod w tym repozytorium napisałem samodzielnie. Każda linijka jest moja i
 
 ## Prezentacja aplikacji
 
-![Ekran główny](app/src/main/java/porwol/krzysztof/painzone/screenshots/EkranGłówny.jpg)
-![Edycja treningu](app/src/main/java/porwol/krzysztof/painzone/screenshots/EdycjaTreningu.jpg)
-![Start treningu](app/src/main/java/porwol/krzysztof/painzone/screenshots/StartTreningu.jpg)
+<p>
+<img src="app/src/main/java/porwol/krzysztof/painzone/screenshots/EkranGłówny.jpg" width="250"/>
+<img src="app/src/main/java/porwol/krzysztof/painzone/screenshots/EdycjaTreningu.jpg" width="250"/>
+<img src="app/src/main/java/porwol/krzysztof/painzone/screenshots/StartTreningu.jpg" width="250"/>
+</p>
 
 ## Co robi aplikacja
 

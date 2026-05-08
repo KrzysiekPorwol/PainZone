@@ -194,3 +194,4 @@
 4. Dodano walidację - pojawia się informacja o
    pomyślnym dodaniu ćwiczenia do planu.
 5. Aktualizacja pliku gitignore.
+6. Stworzono plik README.MD.
