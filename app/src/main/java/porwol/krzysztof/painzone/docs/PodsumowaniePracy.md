@@ -193,3 +193,4 @@
    nie pozwoli na dodanie 11 ćwiczenia.
 4. Dodano walidację - pojawia się informacja o
    pomyślnym dodaniu ćwiczenia do planu.
+5. Aktualizacja pliku gitignore.
