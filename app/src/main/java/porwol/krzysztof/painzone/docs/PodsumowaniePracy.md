@@ -186,7 +186,7 @@
 
 **2026-05-08**
 1. Dodano walidację - maksymalna ilość serii w ćwiczeniu to 20.
-2. Dodano walidację - podczas wprowadzaania cwiczenia można 
+2. Dodano walidację - podczas wprowadzania cwiczenia można 
    wpisać tylko cyfry (maksymalnie 999 powt i ciezaru).
 3. Dodano walidację - od teraz można maksymalnie mieć
    10 ćwiczeń w planie. ekran dodawania ćwiczenia

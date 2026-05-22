@@ -12,5 +12,10 @@ local.properties
 .externalNativeBuild
 .cxx
 
+# Signing
+*.jks
+*.keystore
+keystore.properties
+
 # macOS
 .DS_Store
