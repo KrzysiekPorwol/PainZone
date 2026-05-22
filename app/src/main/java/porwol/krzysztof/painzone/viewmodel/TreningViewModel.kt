@@ -29,12 +29,11 @@ class TreningViewModel(app: Application) : AndroidViewModel(app) {
             initialValue = emptyList()
         )
 
-    suspend fun dodaj(nazwa: String, serie: Int, plan: Plan): Boolean {
-        val ilosc = dao.policzWPlanie(plan)
-        if (ilosc >= 10) return false
-        dao.dodaj(Cwiczenie(nazwa = nazwa, serie = serie, plan = plan))
-        return true
-    }
+    suspend fun dodaj(nazwa: String, serie: Int, plan: Plan): Boolean =
+        dao.dodajZLimitem(
+            Cwiczenie(nazwa = nazwa, serie = serie, plan = plan),
+            limit = 10
+        )
 
     fun usun(cwiczenie: Cwiczenie) = viewModelScope.launch {
         dao.usun(cwiczenie)
