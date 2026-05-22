@@ -151,8 +151,8 @@ fun EkranHistoriiPlanu(
                 .align(Alignment.BottomEnd)
         )
 
-        // Dialog potwierdzenia usunięcia
-        if (treningDoUsuniecia != null) {
+        val trening = treningDoUsuniecia
+        if (trening != null) {
             AlertDialog(
                 onDismissRequest = { treningDoUsuniecia = null },
                 title = { Text("Usunąć ten trening?") },
@@ -160,7 +160,7 @@ fun EkranHistoriiPlanu(
                 confirmButton = {
                     TextButton(
                         onClick = {
-                            vm.usunTrening(treningDoUsuniecia!!)
+                            vm.usunTrening(trening)
                             treningDoUsuniecia = null
                         }
                     ) {
