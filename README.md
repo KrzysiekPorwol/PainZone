@@ -41,14 +41,6 @@ Unit tests.
 
 Easiest option — [download the APK from Releases](https://github.com/KrzysiekPorwol/PainZone/releases/latest) and install on an Android phone.
 
-If you want to look at the code — clone the repo, open in Android Studio and run on an emulator or phone.
-
-## What's next
-
-PainZone is the first version of this project — written from scratch to properly learn Kotlin, Compose and Android architecture.
-
-Next step is PainZone v2 in a separate repository. This time I plan to work with Claude Code as a support tool — I still want to understand and control what happens in the project, but speed up the actual coding.
-
 ---
 
 # PainZone (PL)
@@ -94,10 +86,3 @@ Unit testy.
 
 Najprostsza opcja — [pobierz APK z zakładki Releases](https://github.com/KrzysiekPorwol/PainZone/releases/latest) i zainstaluj na telefonie z Androidem.
 
-Jeśli chcesz przejrzeć kod — sklonuj repo, otwórz w Android Studio i odpal na emulatorze lub telefonie.
-
-## Co dalej
-
-PainZone to pierwsza wersja tego projektu — pisana od zera, żeby dobrze zrozumieć Kotlina, Compose i całą architekturę Androida.
-
-Następny krok to PainZone v2 w osobnym repozytorium. Tym razem planuję pracować z Claude Code jako narzędziem wspomagającym — dalej chcę rozumieć i kontrolować to co się dzieje w projekcie, ale przyspieszyć samą pracę z kodem.
